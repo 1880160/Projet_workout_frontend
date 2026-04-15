@@ -1,0 +1,65 @@
+<div class="w-screen h-screen grid grid-cols-1 place-items-center bg-base-200">
+    <div class="card card-border bg-base-100 w-100 min-h-100 shadow-sm">
+
+        <div class="card-body grid grid-cols-1 place-items-center">
+
+
+            <app-logo></app-logo>
+
+            <h2 class="card-title justify-center">Welcome to FitTrack</h2>
+            <p class="text-center">Sign in to access your workout tracker</p>
+            <div class="card-actions">
+                <div class="w-full">
+                    <p class="font-bold">Username</p>
+                    <label class="input bg-primary-content w-full" >
+                        <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                                stroke="currentColor">
+                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </g>
+                        </svg>
+                        <input type="text" [formField]="loginForm.username" placeholder="Username" title="Only letters, numbers or dash" />
+                    </label>
+                    @if(loginForm.username().invalid()){
+                        <p class="text-error">Username has validation errors:</p>
+                        <ul>
+                        @for (error of loginForm.username().errors(); track error.message) {
+                            <li class="text-error text-xs">{{error.message}}</li>
+                        }
+                        </ul>
+                    }
+                </div>
+                <div class="w-full">
+                    <p class="font-bold">Password</p>
+                    <label class="input  bg-primary-content w-full">
+                        <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                                stroke="currentColor">
+                                <path
+                                    d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z">
+                                </path>
+                                <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
+                            </g>
+                        </svg>
+                        <input type="password" placeholder="Password" [formField]="loginForm.password" 
+                            title="Must be more than 8 characters, including number, lowercase letter, uppercase letter" />
+                    </label>
+                    @if(loginForm.password().invalid()){
+                        <p class="text-error">Password has validation errors:</p>
+                        <ul>
+                        @for (error of loginForm.password().errors(); track error.message) {
+                            <li class="text-error text-xs">{{error.message}}</li>
+                        }
+                        </ul>
+                    }
+                </div>
+                <p class="text-error text-center">{{ errorMsg() }}</p>
+                <button class="btn btn-primary w-full mt-2" [disabled]="canConfirm()" (click)="signInConfirm()">
+                    <p class="text-primary-content" >Sign In</p>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
