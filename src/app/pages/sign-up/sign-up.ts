@@ -3,12 +3,12 @@ import { Logo } from '../../component/logo/logo';
 import { form, required, minLength, maxLength, pattern, FormField, email } from '@angular/forms/signals';
 import { LoginData } from '../sign-in/login-data';
 import { SignInData } from './sign-in-data';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth-service';
 
 @Component({
   selector: 'app-sign-up',
-  imports: [Logo, FormField],
+  imports: [Logo, FormField, RouterModule],
   templateUrl: './sign-up.html',
   styleUrl: './sign-up.css',
 })

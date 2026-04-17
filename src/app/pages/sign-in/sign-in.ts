@@ -4,10 +4,11 @@ import { FieldState, form, FormField, maxLength, minLength, pattern, required } 
 import { LoginData } from './login-data';
 import { catchError, Observable } from 'rxjs';
 import { AuthService } from '../../services/auth-service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
-  imports: [Logo, FormField],
+  imports: [Logo, FormField, RouterModule],
   templateUrl: './sign-in.html',
   styleUrl: './sign-in.css',
 })
