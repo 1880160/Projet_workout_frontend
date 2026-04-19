@@ -4,16 +4,17 @@ import { FieldState, form, FormField, maxLength, minLength, pattern, required } 
 import { LoginData } from './login-data';
 import { catchError, Observable } from 'rxjs';
 import { AuthService } from '../../services/auth-service';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
-  imports: [Logo, FormField],
+  imports: [Logo, FormField, RouterModule],
   templateUrl: './sign-in.html',
   styleUrl: './sign-in.css',
 })
 export class SignIn {
   private auth = inject(AuthService);
-
+  private router = inject(Router)
   errorMsg = signal('');
 
 
@@ -41,10 +42,14 @@ export class SignIn {
     return !(this.loginForm.password().valid() &&
     this.loginForm.username().valid());
   })
+
   async signInConfirm() {
     (await this.auth.login(this.loginForm().value())).subscribe(
       {
-        next : this.auth.setSession,
+        next : (next) => {
+          this.auth.setSession(next);
+          this.router.navigate(['home'])
+        },
         error : (error) => this.errorMsg.set(error.error?.message)
       }
     )

@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginData } from '../pages/sign-in/login-data';
-import { catchError, config, of, throwError } from 'rxjs';
+import { catchError, config, Observable, of, throwError } from 'rxjs';
 import { SignInData } from '../pages/sign-up/sign-in-data';
 const route = 'users';
 const domain = 'localhost'
@@ -44,7 +44,15 @@ export class AuthService {
     )
   }
 
-  getSession(){
+  async getSession(){
+
+    return this.getSessionOrError();
+  }
+
+  private getSessionOrError(){
+    if (!this.isLoggedIn()){
+      throw new Error("User is not logged In");
+    }
     return localStorage.getItem('jwtToken_access_token');
   }
 
