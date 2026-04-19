@@ -1,5 +1,5 @@
 <div class="navbar bg-base-100 shadow-sm px-5">
-    <div  class="link">
+    <div class="link">
 
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -37,7 +37,7 @@
     </div>
     <div class="flex-none">
         <div class="flex flex-1 gap-2">
-            <button class="btn  btn-ghost">
+            <button class="btn  btn-ghost" value="home" (click)="navigatePage($event)">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M10 14V8.66667C10 8.48986 9.92976 8.32029 9.80474 8.19526C9.67971 8.07024 9.51014 8 9.33333 8H6.66667C6.48986 8 6.32029 8.07024 6.19526 8.19526C6.07024 8.32029 6 8.48986 6 8.66667V14"
@@ -48,7 +48,7 @@
                 </svg>
                 <p>Home</p>
             </button>
-            <button class="btn  btn-ghost">
+            <button class="btn  btn-ghost" value="exercises" (click)="navigatePage($event)">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10.6667 4L13.3334 13.3333" stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round"
                         stroke-linejoin="round" />
@@ -62,7 +62,7 @@
 
                 <p>Exercises</p>
             </button>
-            <button class="btn  btn-ghost">
+            <button class="btn  btn-ghost" value="my-exercises" (click)="navigatePage($event)">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M7.99998 14.6667C11.6819 14.6667 14.6666 11.6819 14.6666 8C14.6666 4.3181 11.6819 1.33333 7.99998 1.33333C4.31808 1.33333 1.33331 4.3181 1.33331 8C1.33331 11.6819 4.31808 14.6667 7.99998 14.6667Z"
@@ -77,7 +77,7 @@
 
                 <p>My Exercises</p>
             </button>
-            <button class="btn  btn-ghost">
+            <button class="btn  btn-ghost" value="my-workouts" (click)="navigatePage($event)">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_38_79)">
                         <path d="M9.60002 9.6L6.40002 6.4" stroke="#0A0A0A" stroke-width="1.33333"
@@ -114,9 +114,9 @@
                     </svg>
                 </button>
                 <div class="flex-none py-2">
-                    <p class="text-base-content">Admin</p>
+                    <p class="text-base-content">{{userData.value()?.username}}</p>
                 </div>
-                <button class="btn btn-outline btn-secondary">
+                <button class="btn btn-outline btn-secondary" (click)="logout()">
 
 
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -128,8 +128,6 @@
                         <path d="M14 8H6" stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round"
                             stroke-linejoin="round" />
                     </svg>
-
-
                     <p> Logout</p>
                 </button>
 
