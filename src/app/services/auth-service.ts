@@ -28,14 +28,15 @@ export class AuthService {
       date.setUTCSeconds(jwtToken.exp);
       localStorage.setItem('jwtToken_expire_date', date.toString());
       console.log(jwtToken)
+
     }
   }
 
 
-  refreshLogin(){
+  async refreshLogin(){
     return this.http.get(`http://${domain}:3000/${route}/refresh-login`, {
       headers : {
-        'Authorization' : 'Bearer'+`${this.getSession()}`,
+        'Authorization' : 'Bearer '+`${ await this.getSession()}`,
       },
     }).subscribe(
       {

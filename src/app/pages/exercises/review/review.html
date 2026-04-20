@@ -1,0 +1,34 @@
+<div class="bg-base-300 h-screen p-4">
+    <div class="flex flex-row gap-5 p-5">
+        <div class="flex-none align-center">
+            <button class="btn" (click)="navigateExercise()">Back to exercises</button>
+        </div>
+        <div class="flex-1">
+            <h1 class="text-xl font-bold">Exercise Review</h1>
+            <p class="text-secondary">Review and approve user-submitted exercises</p>
+        </div>
+        <div class="flex-none">
+            <h2 class="badge font-semibold badge-primary">Admin Panel</h2>
+        </div>
+    </div>
+    <div class="card bg-base-100">
+        <div class="card-body">
+
+            <div class="card bg-base-200">
+                <div class="card-body">
+                    <app-exercise-display [exercise]="testExercise()"></app-exercise-display>
+                    <p>Hello world!</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+
+            <div class="card bg-base-200">
+                <div class="card-body">
+                    <app-exercise-display [exercise]="testExercise()"></app-exercise-display>
+                    <p>Hello world!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
