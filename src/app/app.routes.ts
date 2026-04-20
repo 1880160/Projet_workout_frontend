@@ -6,6 +6,7 @@ import { Exercises } from './pages/exercises/exercises';
 import { MyExercises } from './pages/my-exercises/my-exercises';
 import { MyWorkouts } from './pages/my-workouts/my-workouts';
 import { authGuard } from './guards/auth-guard';
+import { Review } from './pages/exercises/review/review';
 
 export const routes: Routes = [
 
@@ -21,6 +22,11 @@ export const routes: Routes = [
         path: 'home',
         component: Home,
         canActivate: [authGuard],
+    },
+    {
+        path: 'exercises/review',
+        component: Review,
+        canActivate: [authGuard]
     },
     {
         path: 'exercises',
