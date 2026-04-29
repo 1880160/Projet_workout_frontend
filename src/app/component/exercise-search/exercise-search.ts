@@ -1,4 +1,4 @@
-import { Component, inject, resource, signal } from '@angular/core';
+import { Component, inject, input, InputSignal, output, resource, signal } from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { firstValueFrom } from 'rxjs';
 import { ExerciseData } from '../../data/exercise/ExerciseData';
@@ -7,16 +7,16 @@ import { ExerciseParams } from '../../data/exercise/ExerciseParams';
 import { ExerciseService } from '../../services/exercise-service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ExerciseDisplay } from '../exercise-display/exercise-display';
+import { ExerciseFilter } from '../exercise-filter/exercise-filter';
 
 @Component({
   selector: 'app-exercise-search',
-  imports: [ExerciseDisplay, FormField, ReactiveFormsModule],
+  imports: [ExerciseDisplay, ReactiveFormsModule, ExerciseFilter],
   templateUrl: './exercise-search.html',
   styleUrl: './exercise-search.css',
 })
 export class ExerciseSearch {
 
-  
   exercises = inject(ExerciseService)
   exerciseFilterModel = signal<ExerciseParams>({
     name: '',
@@ -25,8 +25,12 @@ export class ExerciseSearch {
   });
   options = fieldsOptions;
 
+  onExerciseSelectedEvent = output<ExerciseData>()
 
   exerciseFilterForm = form(this.exerciseFilterModel);
+
+  isSelectable : InputSignal<boolean> = input<boolean>(false);
+
   exercisesData = resource<ExerciseData[], ExerciseParams>({
     params: () => (this.exerciseFilterForm().value()),
     loader: async ({ params, abortSignal }) => {
@@ -34,4 +38,14 @@ export class ExerciseSearch {
       return value
     }
   })
+  onUpdatedfilter($event : ExerciseParams){
+    this.exerciseFilterModel.update((exerciseParam) => $event);
+  }
+
+  onExerciseSelected($event : ExerciseData | undefined){
+    if ($event){
+      this.onExerciseSelectedEvent.emit($event)
+    }
+  }
+
 }

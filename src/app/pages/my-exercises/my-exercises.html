@@ -1,1 +1,34 @@
-<p>my-exercises works!</p>
+<div class="bg-base-300 w-screen min-h-screen p-5 flex flex-col gap-5">
+
+    <div class="w-fill flex flex-row">
+        <div class="flex flex-1 flex-col">
+            <h2 class="text-4xl font-bold text-base-content">My Exercises</h2>
+            <p class="text-info-content">Create and manage your custom exercises</p>
+        </div>
+        <div class="flex flex-none">
+            <button class="btn btn-primary" (click)="createUserExerciseProperties()">
+                +
+                New Exercise </button>
+
+        </div>
+    </div>
+    <div class="flex flex-col gap-5 p-4">
+        <div class="flexflex-1">
+            <h2 class="text-lg font-bold text-base-content">My Exercises</h2>
+        </div>
+        <div>
+            <app-exercise-filter (onFiltersUpdated)="onUpdatedfilter($event)"></app-exercise-filter>
+        </div>
+        <div class="flex flex-1">
+            <div class="flex flex-wrap gap-4">
+                @for (userExercise of userExercisesData.value(); track $index) {
+                    <app-user-exercise-display (onDeleteEvent)="deleteUserProperties($event)" (onEditEvent)="editUserExerciseProperties($event)" [userExercise]="userExercise"></app-user-exercise-display>
+                }
+
+            </div>
+        </div>
+    </div>
+    <dialog #properties_modal class="modal">
+        <app-user-exercise-properties (onCloseEvent)="closeModal()"  (onSubmitEvent)="SubmitProperties($event)" [errorMessage]="userExerciseRequestError()" [(userExerciseModel)]="userExercisePopup" [mode]="this.userExerciseMode()" ></app-user-exercise-properties>
+    </dialog>
+</div>

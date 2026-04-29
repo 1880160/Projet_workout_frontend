@@ -27,4 +27,14 @@ export class ExerciseService {
       }
     )
   }
+  async findOne(id : number){
+    const token = await this.auth.getSession()
+    return this.http.get<ExerciseData>(`http://${domain}:3000/${route}/${id}`,
+      {
+        headers: {
+          'Authorization': 'Bearer ' + `${token}`,
+        },
+      }
+    )
+  }
 }

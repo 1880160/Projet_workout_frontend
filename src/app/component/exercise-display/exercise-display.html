@@ -48,6 +48,8 @@
             <div class="badge badge-info">{{exercise()?.equipment}}</div>
             <div class="badge badge-info">{{exercise()?.level}}</div>
         </div>
-
+        <div [hidden]="!isSelectable()">
+        <button class="btn btn-primary w-full" (click)="execiseClick()" >Select Exercise</button>
+        </div>
     </div>
 </div>
