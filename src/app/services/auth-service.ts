@@ -1,8 +1,9 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { LoginData } from '../pages/sign-in/login-data';
 import { catchError, config, Observable, of, throwError } from 'rxjs';
 import { SignInData } from '../pages/sign-up/sign-in-data';
+import { Router } from '@angular/router';
 const route = 'users';
 const domain = 'localhost'
 @Injectable({
@@ -11,6 +12,7 @@ const domain = 'localhost'
 export class AuthService {
   constructor(private http : HttpClient){}
 
+   private router = inject(Router);
   
   async login(loginData : LoginData){
     return this.http.post(`http://${domain}:3000/${route}/sign-in`,loginData)
@@ -46,8 +48,14 @@ export class AuthService {
   }
 
   async getSession(){
-
-    return this.getSessionOrError();
+    try{
+      return this.getSessionOrError();
+    }
+    catch(error){
+      alert(error)
+      this.router.navigate(['/sign-in'])
+    }
+    return null;
   }
 
   private getSessionOrError(){
