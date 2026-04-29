@@ -1,9 +1,9 @@
 import { inject, Injectable } from '@angular/core';
-import { UserExerciseData, UserExerciseDataDto } from '../data/user-exercise/UserExerciseData';
+import { UserExerciseData, UserExerciseDataDto } from '../data/user-exercise/user-exercise-data';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth-service';
-import { ExerciseParams } from '../data/exercise/ExerciseParams';
+import { ExerciseParams } from '../data/exercise/exercise-params';
 const route = 'user-exercises';
 const domain = 'localhost';
 @Injectable({

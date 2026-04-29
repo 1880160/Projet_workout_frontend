@@ -1,6 +1,6 @@
 import { Component, computed, ElementRef, input, output, signal, ViewChild, viewChild } from '@angular/core';
-import { fieldsOptions } from '../../data/exercise/ExerciseFieldsOptions';
-import { ExerciseData, PostExerciseData } from '../../data/exercise/ExerciseData';
+import { fieldsOptions } from '../../data/exercise/exercise-fields-options';
+import { ExerciseData, PostExerciseData } from '../../data/exercise/exercise-data';
 import { form, FormField } from '@angular/forms/signals';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ArrayField } from '../array-field/array-field';

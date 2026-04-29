@@ -1,0 +1,16 @@
+<div class="card bg-base-100 min-w-100 shadow-sm ">
+    <div class="card-body">
+        <div class="flex flex-row">
+            <div class="flex-1">
+                <h3 class="font-semibold text-xl">{{this.workout()?.workoutName}}</h3>
+            </div>
+        </div>
+        <div class="flex-1">
+            @for (item of this.exerciseList(); track $index) 
+            {
+                <div class="badge font-bold">{{item}}</div>
+            }
+        </div>
+    </div>
+
+</div>

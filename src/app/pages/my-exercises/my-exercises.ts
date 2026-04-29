@@ -1,11 +1,11 @@
 import { Component, ElementRef, inject, resource, signal, viewChild } from '@angular/core';
 import { UserExerciseDisplay } from '../../component/user-exercise-display/user-exercise-display';
 import { ExerciseFilter } from '../../component/exercise-filter/exercise-filter';
-import { UpdateUserExerciseDataDto, UserExerciseData, UserExerciseDataDto } from '../../data/user-exercise/UserExerciseData';
+import { UpdateUserExerciseDataDto, UserExerciseData, UserExerciseDataDto } from '../../data/user-exercise/user-exercise-data';
 import { form } from '@angular/forms/signals';
 import { firstValueFrom, Observable } from 'rxjs';
-import { fieldsOptions } from '../../data/exercise/ExerciseFieldsOptions';
-import { ExerciseParams } from '../../data/exercise/ExerciseParams';
+import { fieldsOptions } from '../../data/exercise/exercise-fields-options';
+import { ExerciseParams } from '../../data/exercise/exercise-params';
 import { ExerciseService } from '../../services/exercise-service';
 import { UserExerciseService } from '../../services/user-exercise-service';
 import { UserExerciseProperties } from '../../component/user-exercise-properties/user-exercise-properties';

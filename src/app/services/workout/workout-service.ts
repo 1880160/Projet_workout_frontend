@@ -1,21 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { AuthService } from './auth-service';
+import { WorkoutData } from '../../data/workout/workout-data';
 import { Observable } from 'rxjs';
-import { UserData } from '../data/user-data';
-const route = 'users';
+import { AuthService } from '../auth-service';
+const route = 'workout';
 const domain = 'localhost'
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
+export class WorkoutService {
+
   constructor(private http: HttpClient) { }
   private auth = inject(AuthService);
-
-  
-  async userInfo() : Promise<Observable<UserData>> {
+  async find(): Promise<Observable<WorkoutData[]>> {
     const token = await this.auth.getSession()
-    return this.http.get<UserData>(`http://${domain}:3000/${route}/my-info`,
+    return this.http.get<WorkoutData[]>(`http://${domain}:3000/${route}/my-workouts/`,
       {
         headers: {
           'Authorization': 'Bearer ' + `${token}`,

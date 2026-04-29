@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ExerciseData, PostExerciseData } from '../data/exercise/ExerciseData';
-import { ExerciseParams } from '../data/exercise/ExerciseParams';
+import { ExerciseData, PostExerciseData } from '../data/exercise/exercise-data';
+import { ExerciseParams } from '../data/exercise/exercise-params';
 import { AuthService } from './auth-service';
 const route = 'exercises-request';
 const domain = 'localhost'

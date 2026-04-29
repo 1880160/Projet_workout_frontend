@@ -1,9 +1,9 @@
 import { Component, ElementRef, inject, input, model, output, resource, signal, viewChild } from '@angular/core';
 import { ExerciseSearch } from '../exercise-search/exercise-search';
-import { UserExerciseData, UserExerciseDataDto } from '../../data/user-exercise/UserExerciseData';
+import { UserExerciseData, UserExerciseDataDto } from '../../data/user-exercise/user-exercise-data';
 import { form, FormField } from '@angular/forms/signals';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ExerciseData } from '../../data/exercise/ExerciseData';
+import { ExerciseData } from '../../data/exercise/exercise-data';
 import { firstValueFrom, identity, single } from 'rxjs';
 import { PropertiesMode } from '../../data/properties-mode/properties-mode-enum';
 import { ExerciseService } from '../../services/exercise-service';

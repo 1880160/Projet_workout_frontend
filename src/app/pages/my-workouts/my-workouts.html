@@ -1,1 +1,21 @@
-<p>my-workouts works!</p>
+<div class="bg-base-300 w-screen min-h-screen p-5 flex flex-col gap-5">
+    <div class="w-fill flex flex-row">
+        <div class="flex flex-1 flex-col">
+            <h2 class="text-4xl font-bold text-base-content">My Workouts</h2>
+            <p class="text-info-content">View and manage your workout schedule by day</p>
+        </div>
+        <div class="flex flex-none">
+            <button class="btn btn-primary">
+                +
+                Create Workout </button>
+
+        </div>
+    </div>
+    <div class="flex flex-1 flex-col gap-2">
+        @for (item of this.workoutWeeklyData(); track $index) {
+        <app-weekly-workout-display [weekDay]="weekDays[item.weekNumber]"
+            [workoutsWeeklyDatas]="item.workouts" />
+
+        }
+    </div>
+</div>

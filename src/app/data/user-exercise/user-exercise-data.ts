@@ -1,5 +1,5 @@
-import { ExerciseData } from "../exercise/ExerciseData"
-import { UserData } from "../UserData"
+import { ExerciseData } from "../exercise/exercise-data"
+import { UserData } from "../user-data"
 
 export  interface UserExerciseData {
 
