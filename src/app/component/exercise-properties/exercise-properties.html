@@ -86,12 +86,16 @@
                 <app-array-field [options]="options.muscles "
                     (itemsUpdatedEvent)="onSecondaryMusclesUpdated($event)"></app-array-field>
             </div>
-            <h3>Description</h3>
-            <div class="flex-1 font-medium"></div>
-            <form>
-                <textarea class="textarea" (input)="descriptionChanged($event)"
-                    [formField]="textAreaField.value"></textarea>
-            </form>
+
+            <div class="flex-1 font-medium">
+                <h3>Description</h3>
+                <form>
+                    <textarea class="textarea w-full" (input)="descriptionChanged($event)"
+                        [formField]="textAreaField.value"></textarea>
+                </form>
+            </div>
+
+
             <div class="flex-1 font-bold">
                 <p class="text-error text-center">{{ errorMessage() }}</p>
             </div>
@@ -103,10 +107,10 @@
 
             <div class="flex flex-row w-full gap-4">
                 <div class="flex-1">
-                        <button class="btn w-full" (click)="CloseDialog()">Close</button>
+                    <button class="btn w-full" (click)="CloseDialog()">Close</button>
                 </div>
                 <div class="flex-1 w-full">
-                        <button class="btn btn-primary w-full" (click)="SubmitInfo()">Submit</button>
+                    <button class="btn btn-primary w-full" (click)="SubmitInfo()">Submit</button>
                 </div>
             </div>
 

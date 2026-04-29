@@ -1,51 +1,16 @@
 <div class="flex flex-col gap-4">
-    <div class="card bg-base-100 shadow-sm">
-        <div class="card-body">
-            <p class="font-medium">Filters</p>
-            <label class="input input-ghost bg-base-300 w-full">
-                <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
-                        stroke="currentColor">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <path d="m21 21-4.3-4.3"></path>
-                    </g>
-                </svg>
-                <input type="search" class="grow" placeholder="Search exercises..." [formField]="exerciseFilterForm.name" />
-            </label>
-
-            <div class="flex gap-2">
-                <div class="flex-1 font-medium">
-                    <h3>Category</h3>
-                    <select class="select select-ghost bg-base-300 w-full" [formField]="exerciseFilterForm.category">
-                        <option selected value="">All</option>
-                        @for (category of options.categories; track category) {
-                            <option [value]="category">{{category}}</option>
-                        }
-                    </select>
-                </div>
-                <div class="flex-1 font-medium">
-                    <h3>Muscle Group</h3>
-                    <select class="select select-ghost bg-base-300 w-full" [formField]="exerciseFilterForm.muscle_group">
-                        <option selected value="">All</option>
-                        @for (muscle of options.muscles; track muscle) {
-                            <option [value]="muscle">{{muscle}}</option>
-                        }
-                    </select>
-                </div>
-            </div>
-        </div>
-
-    </div>
+    <app-exercise-filter (onFiltersUpdated)="onUpdatedfilter($event)"></app-exercise-filter>
     <div>
         <div class="flex">
             <div class="flex-1">
-                <p class="text-base-content">Showing {{exercisesData.value()?.length}} out of {{exercisesData.value()?.length}} exercises</p>
+                <p class="text-base-content">Showing {{exercisesData.value()?.length}} out of
+                    {{exercisesData.value()?.length}} exercises</p>
             </div>
 
         </div>
         <div class="grid grid-cols-2 p-4 gap-10">
             @for (exercise of exercisesData.value(); track exercise.exerciseId) {
-            <app-exercise-display [exercise]="exercise"></app-exercise-display>
+            <app-exercise-display [isSelectable]="isSelectable()" [exercise]="exercise" (onClickEvent)="onExerciseSelected($event)"></app-exercise-display>
             }
         </div>
     </div>

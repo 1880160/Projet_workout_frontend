@@ -1,0 +1,91 @@
+<div class="modal-box">
+
+    <div class="flex flex-col gap-5 w-full">
+        <div class="flex-1 font-medium">
+            <h3 class="text-2xl font-bold"> Exercise</h3>
+            <p class="">Define specific parameters for your exercise</p>
+
+        </div>
+
+        <div class="flex-1 font-medium">
+            <h3>Exercise Name</h3>
+            <label class="input input-ghost bg-base-300 w-full">
+                <input type="text" class="grow" placeholder="e.g., my-bench-press"
+                    [formField]="userExerciseForm.name" />
+            </label>
+        </div>
+        <div class="flex-1 font-medium">
+            <h3>Exercise</h3>
+            <button class="btn w-full" (click)="showModal()">
+                {{ this.exerciseName.value()}}
+            </button>
+        </div>
+        <div class="flex flex-row gap-2">
+            <div class="flex-1 font-medium">
+                <h3>Weight (lbs)</h3>
+                <label class="input input-ghost bg-base-300 w-full">
+                    <input type="number" class="grow" placeholder="e.g 30" [formField]="userExerciseForm.weight" />
+                </label>
+            </div>
+            <div class="flex-1 font-medium">
+                <h3>Repetitions</h3>
+                <label class="input input-ghost bg-base-300 w-full">
+                    <input type="number" class="grow" placeholder="e.g 12 reps"
+                        [formField]="userExerciseForm.repetition" />
+                </label>
+            </div>
+        </div>
+        <div class="flex flex-row gap-2">
+            <div class="flex-1 font-medium">
+                <h3>Sets</h3>
+                <label class="input input-ghost bg-base-300 w-full">
+                    <input type="number" class="grow" placeholder="e.g 3 sets" [formField]="userExerciseForm.sets" />
+                </label>
+            </div>
+            <div class="flex-1 font-medium">
+                <h3>Rest Time (seconds)</h3>
+                <label class="input input-ghost bg-base-300 w-full">
+                    <input type="number" class="grow" placeholder="e.g 30 seconds or 0 if no time"
+                        [formField]="userExerciseForm.restTime" />
+                </label>
+            </div>
+        </div>
+        <div class="flex-1 font-medium">
+            <h3>Execution Time (seconds)</h3>
+            <label class="input input-ghost bg-base-300 w-full">
+                <input type="number" class="grow" placeholder="e.g 30 seconds or 0 if no time"
+                    [formField]="userExerciseForm.executionTime" />
+            </label>
+        </div>
+        <div class="flex-1 font-medium">
+            <p class="text-error text-center">{{errorMessage()}}</p>
+        </div>
+        <div class="flex flex-row gap-2">
+            <div class="flex-1 font-medium">
+                <button class="btn btn-primary w-full" (click)="submitDialog()">
+                    {{ this.mode() == 0? "Create" : "Update" }} Exercise
+                </button>
+            </div>
+            <div class="flex-1 font-medium">
+                <button class="btn w-full" (click)="closeDialog()">
+                    Cancel
+                </button>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div>
+        <dialog #exercise_selector class="modal">
+            <div class="modal-box w-11/12 max-w-5xl">
+                <app-exercise-search [isSelectable]="true"
+                    (onExerciseSelectedEvent)="exerciseSelected($event)"></app-exercise-search>
+            </div>
+        </dialog>
+    </div>
+
+
+
+</div>

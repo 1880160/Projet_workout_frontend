@@ -1,0 +1,89 @@
+<div class="card bg-base-100 min-w-100 min-h-75 ">
+    <div class="card-body">
+        <div class="flex flex-row">
+            <div class="flex-1">
+                <h3 class="font-semibold text-xl">{{userExercise()?.name}}</h3>
+                <p>{{userExercise()?.exercise?.name}}</p>
+            </div>
+
+            <div class="flex flex-none flex-row gap-1"  >
+                <button class="btn btn-ghost" (click)="editUserExercise()">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M14.116 4.54132C14.4685 4.18894 14.6665 3.71097 14.6666 3.21256C14.6666 2.71415 14.4687 2.23613 14.1163 1.88366C13.7639 1.53118 13.286 1.33313 12.7876 1.33307C12.2892 1.33301 11.8111 1.53094 11.4587 1.88332L2.56133 10.7827C2.40654 10.937 2.29207 11.127 2.228 11.336L1.34733 14.2373C1.3301 14.295 1.3288 14.3562 1.34356 14.4146C1.35833 14.4729 1.38861 14.5261 1.43119 14.5687C1.47378 14.6112 1.52708 14.6414 1.58544 14.656C1.64379 14.6707 1.70504 14.6693 1.76266 14.652L4.66466 13.772C4.87344 13.7085 5.06345 13.5947 5.218 13.4407L14.116 4.54132Z"
+                            stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <button class="btn btn-ghost" (click)="deleteUserExercise()">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 4H14" stroke="#E7000B" stroke-width="1.33333" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path
+                            d="M12.6666 4V13.3333C12.6666 14 12 14.6667 11.3333 14.6667H4.66665C3.99998 14.6667 3.33331 14 3.33331 13.3333V4"
+                            stroke="#E7000B" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                            d="M5.33331 4.00001V2.66668C5.33331 2.00001 5.99998 1.33334 6.66665 1.33334H9.33331C9.99998 1.33334 10.6666 2.00001 10.6666 2.66668V4.00001"
+                            stroke="#E7000B" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M6.66669 7.33334V11.3333" stroke="#E7000B" stroke-width="1.33333"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M9.33331 7.33334V11.3333" stroke="#E7000B" stroke-width="1.33333"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+
+                </button>
+            </div>
+        </div>
+        <div class="flex-1">
+            <div class="flex gap-2">
+                @for (item of userExercise()?.exercise?.primaryMuscles; track item) {
+                <div class="badge badge-primary font-bold">{{item}}</div>
+                }
+                @for (item of userExercise()?.exercise?.secondaryMuscles; track item) {
+                <div class="badge badge-secondary font-bold">{{item}}</div>
+                }
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+            <div>
+                <h3 class="text-xl">
+                    Weight
+                </h3>
+                <p class="font-bold">
+                    {{userExercise()?.weight}}lbs
+                </p>
+            </div>
+            <div>
+                <h3 class="text-xl">
+                    Repetitions
+                </h3>
+                <p class="font-bold">
+                    {{userExercise()?.repetition}}
+                </p>
+            </div>
+            <div>
+                <h3 class="text-xl">
+                    Sets
+                </h3>
+                <p class="font-bold">
+                    {{userExercise()?.sets}}
+                </p>
+            </div>
+            <div>
+                <h3 class="text-xl">
+                    Rest Time
+                </h3>
+                <p class="font-bold">
+                    {{userExercise()?.restTime}}s
+                </p>
+            </div>
+            <div>
+                <h3 class="text-xl">
+                    Execution Time
+                </h3>
+                <p class="font-bold">
+                    {{userExercise()?.executionTime}}s
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

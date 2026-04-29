@@ -1,4 +1,4 @@
-import { Component, input, InputSignal } from '@angular/core';
+import { Component, input, InputSignal, output } from '@angular/core';
 import { ExerciseData } from '../../data/exercise/ExerciseData';
 
 @Component({
@@ -9,4 +9,12 @@ import { ExerciseData } from '../../data/exercise/ExerciseData';
 })
 export class ExerciseDisplay {
   exercise : InputSignal<ExerciseData | undefined> = input<ExerciseData>()
+  isSelectable : InputSignal<boolean> = input<boolean>(false);
+  onClickEvent = output<ExerciseData | undefined>()
+
+
+  execiseClick(){
+    this.onClickEvent.emit(this.exercise());
+  }
+
 }
