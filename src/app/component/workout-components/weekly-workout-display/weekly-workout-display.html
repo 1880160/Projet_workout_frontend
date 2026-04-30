@@ -1,16 +1,18 @@
 <div class="flex flex-col gap-2">
     <div class="flex flex-row gap-2">
         <div class="flex-none">
-        <p class="text-2xl text font-semibold">{{this.weekDay()}}</p>
+            <p class="text-2xl text font-semibold align-middle">{{this.weekDay()}}</p>
         </div>
-        <div class="flex-none badge badge-md " >
-            <p>{{this.workoutsWeeklyDatas()?.length}} workouts</p>
+        <div class="py-1">
+            <div class=" badge badge-md font-semibold badge-outline bg-base-100">
+                <p>{{this.workoutsWeeklyDatas()?.length}} workouts</p>
+            </div>
         </div>
 
     </div>
     <div class=" bg-base-200 outline-2 p-2 min-h-50 rounded-lg flex flex-col flex-1 gap-2">
         @for (item of this.workoutsWeeklyDatas(); track $index) {
-            <app-workout-display [workout]="item" />
+        <app-workout-display [workout]="item" />
         }
     </div>
 </div>

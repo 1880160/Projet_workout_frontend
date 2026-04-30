@@ -79,7 +79,15 @@
 
     <div>
         <dialog #exercise_selector class="modal">
-            <div class="modal-box w-11/12 max-w-5xl">
+            <div class="modal-box w-11/12 max-w-5xl flex flex-col gap-2">
+                <div class="flex ">
+                    <div class="flex-1"></div>
+                    <div class="flex-none">
+                   <button class="btn" (click)="closeModal()">Close</button>
+                    </div>
+ 
+                </div>
+                
                 <app-exercise-search [isSelectable]="true"
                     (onExerciseSelectedEvent)="exerciseSelected($event)"></app-exercise-search>
             </div>

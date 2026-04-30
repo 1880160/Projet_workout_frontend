@@ -11,7 +11,7 @@
 
         </div>
     </div>
-    <div class="flex flex-1 flex-col gap-2">
+    <div class="flex flex-1 flex-col gap-4">
         @for (item of this.workoutWeeklyData(); track $index) {
         <app-weekly-workout-display [weekDay]="weekDays[item.weekNumber]"
             [workoutsWeeklyDatas]="item.workouts" />

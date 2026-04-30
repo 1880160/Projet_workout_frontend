@@ -11,6 +11,7 @@ import { UserExerciseService } from '../../services/user-exercise-service';
 import { UserExerciseProperties } from '../../component/user-exercise-properties/user-exercise-properties';
 import { PropertiesMode } from '../../data/properties-mode/properties-mode-enum';
 import { Router } from '@angular/router';
+import { DisplayMode } from '../../data/display-mode/display-mode-enum';
 
 @Component({
   selector: 'app-my-exercises',
@@ -40,6 +41,8 @@ export class MyExercises {
   userExerciseEditId = signal(-1);
 
   userExerciseMode = signal<PropertiesMode>(PropertiesMode.CREATE)
+
+  userExerciseDisplayMode = DisplayMode.EDIT
 
   userExercisesData = resource<UserExerciseData[], ExerciseParams>({
     params: () => (this.exerciseFilterForm().value()),

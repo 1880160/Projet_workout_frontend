@@ -1,16 +1,49 @@
 <div class="card bg-base-100 min-w-100 shadow-sm ">
     <div class="card-body">
-        <div class="flex flex-row">
-            <div class="flex-1">
-                <h3 class="font-semibold text-xl">{{this.workout()?.workoutName}}</h3>
+        <div class="flex flex-col gap-4">
+            <div class="flex flex-row">
+                <div class="flex-1">
+                    <h3 class="font-semibold text-3xl">{{this.workout()?.workoutName}}</h3>
+                </div>
+            </div>
+            <div class="flex flex-1 flex-wrap gap-2">
+                @for (item of this.exerciseList(); track $index)
+                {
+                <div class="badge font-bold capitalize badge-info badge-large">
+                    <p class="text-info-content">
+                        {{item}}
+                    </p>
+                </div>
+                }
+            </div>
+
+
+            <div class="flex flex-wrap gap-4"></div>
+
+            <div class="collapse collapse-arrow">
+                <input type="checkbox" />
+
+                <div class="collapse-title text-2xl font-bold after:start-5 after:end-auto pe-4 ps-12 ">
+                    <div class="indicator">
+                        <p class="mx-4">Exercises</p>
+                        @if (this.workout()?.userExercises?.length ?? 0 > 0) {
+                        <span
+                            class="indicator-item  badge badge-secondary">{{this.workout()?.userExercises?.length}}</span>
+                        }
+                    </div>
+
+                </div>
+                <div class="collapse-content flex flex-wrap">
+
+                    @for (item of this.workout()?.userExercises; track $index)
+                    {
+                    <div class="flex-1">
+                        <app-user-exercise-display [userExercise]="item" [isCollapsable]="true" />
+                    </div>
+                    }
+                </div>
             </div>
         </div>
-        <div class="flex-1">
-            @for (item of this.exerciseList(); track $index) 
-            {
-                <div class="badge font-bold">{{item}}</div>
-            }
-        </div>
-    </div>
 
+    </div>
 </div>

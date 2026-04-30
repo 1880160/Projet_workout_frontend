@@ -1,10 +1,10 @@
-import { Component, computed, inject, input, InputSignal, signal } from '@angular/core';
+import { Component, computed, input, InputSignal } from '@angular/core';
 import { WorkoutData } from '../../../data/workout/workout-data';
-import { ExerciseData } from '../../../data/exercise/exercise-data';
+import { UserExerciseDisplay } from '../../user-exercise-display/user-exercise-display';
 
 @Component({
   selector: 'app-workout-display',
-  imports: [],
+  imports: [UserExerciseDisplay],
   templateUrl: './workout-display.html',
   styleUrl: './workout-display.css',
 })

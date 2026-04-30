@@ -17,6 +17,7 @@ export class MyWorkouts {
   workoutWeeklyData = computed(() => {
     let workoutList = []
     const workouts = this.workoutsData.value()
+    console.log(workouts);
     for(let j = 0 ; j <= 6; j++){
       workoutList.push({weekNumber : j, workouts :  workouts?.filter((workout) => new Date(workout.weekDate).getDay() == j) })
     }
