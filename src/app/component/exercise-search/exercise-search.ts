@@ -23,11 +23,13 @@ export class ExerciseSearch {
     category: '',
     muscle_group: '',
   });
+
+  exerciseFilterForm = form(this.exerciseFilterModel);
   options = fieldsOptions;
 
   onExerciseSelectedEvent = output<ExerciseData>()
 
-  exerciseFilterForm = form(this.exerciseFilterModel);
+
 
   isSelectable : InputSignal<boolean> = input<boolean>(false);
 

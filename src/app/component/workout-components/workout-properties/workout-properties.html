@@ -1,0 +1,100 @@
+<div class="p-4 flex flex-col gap-4">
+    <div class="flex flex-1">
+        <button class="btn btn-ghost" routerLink="/my-workouts">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.00004 12.6667L3.33337 8L8.00004 3.33334" stroke="#0A0A0A" stroke-width="1.33333"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M12.6667 8H3.33337" stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+
+            Back
+            
+        </button>
+    </div>
+    <div class="card min-h-75  bg-base-100 shadow-md">
+        <div class="card-content p-4 flex flex-col gap-4">
+            <div>
+                <h2 class="text-2xl font-semibold">Workout Details</h2>
+                <p class="text-info-content">{{this.workoutPropertiesMode() == propertiesModeClass.CREATE ?
+                    "Create a workout" : "View and modify your workout"}}</p>
+            </div>
+            <div class="flex flex-wrap gap-4">
+                <div class="flex-1">
+                    <h3 class="flex-1 font-medium">Workout Name</h3>
+                    <label class="input input-ghost bg-base-300 w-full">
+                        <input type="text" class="grow" placeholder="e.g., my-leg-day"
+                            [formField]="workoutForm.workoutName" />
+                    </label>
+                </div>
+
+                <div class="flex-1 font-medium">
+                    <h3>Day of week</h3>
+                    <select class="select select-ghost bg-base-300 w-full" [formField]="workoutForm.workoutDayOfWeek">
+                        @for (number of [0,1,2,3,4,5,6] ; track $index) {
+                        <option class="" [value]="weekDays[number]">{{weekDays[number]}}</option>
+                        }
+                    </select>
+                </div>
+                <div class="flex-1">
+                    <h3 class="flex-1 font-medium">Workout time</h3>
+                    <label class="input input-ghost bg-base-300 w-full">
+                        <span class="label">Time:</span>
+                        <input type="time" class="grow" [formField]="workoutForm.workoutTimeOfDay" />
+                    </label>
+                </div>
+                <div class="flex-1">
+                    <h3 class="flex-1 font-medium">Notify before workout</h3>
+                    <label class="input input-ghost bg-base-300 w-full">
+                        <span class="label">Minutes:</span>
+                        <input type="number" class="grow" placeholder="e.g notify me 5 minutes before"
+                            [formField]="this.workoutForm.alertMinutesBefore" />
+                    </label>
+                </div>
+            </div>
+            <div class="flex flex-rows ">
+                <div class="flex-1">
+
+                </div>
+                <div class="flex-none">
+                    <button class="btn btn-primary" (click)="showModal()">+ Add my exercises</button>
+                </div>
+            </div>
+            <div class=" flex flex-wrap border rounded-sm gap-2 min-w-full min-h-75 bg-base-300 ">
+
+                @for (item of this.userExercisesData.value(); track $index)
+                {
+                <div class="flex-1 p-2">
+                    <app-user-exercise-display (onUnselectedEvent)="removeUserExerciseid($event)"
+                        [displayMode]="Mode.DESELECTABLE" [userExercise]="item" [isCollapsable]="true" />
+                </div>
+                }
+            </div>
+            <div class="flex-1 font-medium">
+                <p class="text-error text-center">{{errorMessage()}}</p>
+            </div>
+            <div class="flex-1 font-medium">
+                <button class="btn btn-primary w-full" (click)="submitWorkout()">
+                    {{ this.workoutPropertiesMode() == propertiesModeClass.CREATE? "Create" : "Update" }} Workout
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div>
+        <dialog #user_exercise_selector class="modal">
+            <div class="modal-box w-11/12 max-w-5xl flex flex-col gap-2">
+                <div class="flex ">
+                    <div class="flex-1"></div>
+                    <div class="flex-none">
+                        <button class="btn" (click)="closeModal()">Close</button>
+                    </div>
+
+                </div>
+                <app-user-exercise-search [selectedUserExercises]="this.workoutModel().userExercisesId"
+                    (onUserExerciseRemove)="removeUserExerciseid($event)"
+                    (onUserExerciseAdd)="addUserExerciseId($event)" />
+            </div>
+        </dialog>
+    </div>
+</div>

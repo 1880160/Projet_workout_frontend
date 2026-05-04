@@ -44,10 +44,10 @@
                 }
             </div>
         </div>
-        @if (this.isCollapsable()) 
+        @if (this.isCollapsable())
         {
         <div class="collapse collapse-arrow">
-            <input type="checkbox"/>
+            <input type="checkbox" />
             <div class="collapse-title font-semibold after:start-5 after:end-auto pe-4 ps-12">Details</div>
             <div class="collapse-content">
                 <app-user-exercise-details [userExercise]="userExercise()" />
@@ -55,7 +55,17 @@
         </div>
         }
         @else() {
-            <app-user-exercise-details [userExercise]="userExercise()" />
+        <app-user-exercise-details [userExercise]="userExercise()" />
+        }
+        @if(this.displayMode() == Mode.SELECTABLE){
+        <div>
+            <button class="btn btn-primary w-full" (click)="selectUserExercise()" >Select Exercise</button>
+        </div>
+        }
+        @if(this.displayMode() == Mode.DESELECTABLE){
+        <div>
+            <button class="btn btn-error w-full" (click)="unSelectUserExercise()" >Deselect Exercise</button>
+        </div>
         }
     </div>
 </div>

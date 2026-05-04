@@ -1,6 +1,7 @@
-import { Component, computed, input, InputSignal } from '@angular/core';
+import { Component, computed, input, InputSignal, output } from '@angular/core';
 import { WorkoutData } from '../../../data/workout/workout-data';
 import { UserExerciseDisplay } from '../../user-exercise-display/user-exercise-display';
+import { DisplayMode } from '../../../data/display-mode/display-mode-enum';
 
 @Component({
   selector: 'app-workout-display',
@@ -11,6 +12,13 @@ import { UserExerciseDisplay } from '../../user-exercise-display/user-exercise-d
 export class WorkoutDisplay {
 
   workout : InputSignal<WorkoutData | undefined> = input()
+
+  displayMode = input(DisplayMode.DEFAULT);
+  Mode = DisplayMode
+  //Edit Mode
+  onEditEvent = output<WorkoutData>()
+  onDeleteEvent = output<WorkoutData>()
+
   
   exerciseList = computed(() => 
   {
@@ -23,4 +31,23 @@ export class WorkoutDisplay {
     return exercises = [...new Set(exercises)];
   })
 
+  editWorkout(){
+    const workoutNotNull = this.workout();
+    if (!workoutNotNull) {return;}
+    this.onEditEvent.emit(workoutNotNull);
+  }
+  deleteWorkout(){
+    const workoutNotNull = this.workout();
+    if (!workoutNotNull) {return;}
+    this.onDeleteEvent.emit(workoutNotNull)
+  }
+
+
+
+
 }
+
+
+
+
+

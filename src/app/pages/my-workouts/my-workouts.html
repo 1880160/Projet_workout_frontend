@@ -5,7 +5,7 @@
             <p class="text-info-content">View and manage your workout schedule by day</p>
         </div>
         <div class="flex flex-none">
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" routerLink="/my-workouts/new">
                 +
                 Create Workout </button>
 
@@ -14,7 +14,7 @@
     <div class="flex flex-1 flex-col gap-4">
         @for (item of this.workoutWeeklyData(); track $index) {
         <app-weekly-workout-display [weekDay]="weekDays[item.weekNumber]"
-            [workoutsWeeklyDatas]="item.workouts" />
+            [workoutsWeeklyDatas]="item.workouts" (onDeleteEvent)="deleteWorkout($event)" (onEditEvent)="editWorkout($event)"/>
 
         }
     </div>

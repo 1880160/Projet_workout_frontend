@@ -38,7 +38,3 @@ export interface UserExerciseDataDto {
     exerciseId : number
     
 }
-
-export interface UpdateUserExerciseDataDto extends UserExerciseDataDto{
-    userExerciseId : number
-}

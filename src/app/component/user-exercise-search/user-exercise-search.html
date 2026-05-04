@@ -1,0 +1,18 @@
+<div class="flex flex-col gap-4">
+    <app-exercise-filter (onFiltersUpdated)="onUpdatedfilter($event)"></app-exercise-filter>
+    <div>
+        <div class="flex">
+            <div class="flex-1">
+                <p class="text-base-content">Showing {{userExercisesData.value()?.length}} out of
+                    {{userExercisesData.value()?.length}} exercises</p>
+            </div>
+
+        </div>
+        <div class="grid grid-cols-2 p-4 gap-10">
+            @for (userExercise of userExercisesData.value(); track userExercise.userExerciseId) {
+            
+            <app-user-exercise-display  (onUnselectedEvent)="unSelectUserExercise($event)"  (onSelectedEvent)="selectUserExercise($event)" [displayMode]="this.selectedUserExercises()?.includes(userExercise.userExerciseId)  ? Mode.DESELECTABLE : Mode.SELECTABLE" [userExercise]="userExercise" [isCollapsable]="true" />
+            }
+        </div>
+    </div>
+</div>

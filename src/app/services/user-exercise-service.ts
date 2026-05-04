@@ -25,6 +25,18 @@ export class UserExerciseService {
       }
     )
   }
+  async findMultiple(param : number[]){
+    const token = await this.auth.getSession()
+
+    return this.http.get<UserExerciseData[]>(`http://${domain}:3000/${route}/my-exercises-by-ids`,
+      {
+        params: { ids : param.join(",") },
+        headers: {
+          'Authorization': 'Bearer ' + `${token}`,
+        },
+      }
+    )
+  }
 
 
   async create(body : UserExerciseDataDto){

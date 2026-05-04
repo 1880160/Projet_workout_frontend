@@ -56,5 +56,6 @@ export const fieldsOptions = {
         "e-z curl bar",
         "other"
     ]
+    
 
 }

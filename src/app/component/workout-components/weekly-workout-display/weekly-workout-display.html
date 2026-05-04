@@ -12,7 +12,8 @@
     </div>
     <div class=" bg-base-200 outline-2 p-2 min-h-50 rounded-lg flex flex-col flex-1 gap-2">
         @for (item of this.workoutsWeeklyDatas(); track $index) {
-        <app-workout-display [workout]="item" />
+        <app-workout-display [workout]="item"  [displayMode]="editDisplayMode" 
+        (onDeleteEvent)="deleteWorkout($event)" (onEditEvent)="editWorkout($event)"/>
         }
     </div>
 </div>

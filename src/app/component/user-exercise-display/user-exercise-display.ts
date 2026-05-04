@@ -17,8 +17,16 @@ export class UserExerciseDisplay {
     Mode = DisplayMode
     displayMode = input(DisplayMode.DEFAULT);
 
+    //Edit Mode
     onEditEvent = output<UserExerciseData | undefined>()
     onDeleteEvent = output<UserExerciseData | undefined>()
+
+    //Selectable Mode
+    onSelectedEvent = output<UserExerciseData | undefined>()
+    
+    //DESELECTABLEMode
+    onUnselectedEvent = output<UserExerciseData | undefined>()
+
 
     userExercise : InputSignal<UserExerciseData | undefined> = input()
 
@@ -28,4 +36,12 @@ export class UserExerciseDisplay {
     deleteUserExercise(){
       this.onDeleteEvent.emit(this.userExercise());
     }
+
+    selectUserExercise(){
+      this.onSelectedEvent.emit(this.userExercise());
+    }
+    unSelectUserExercise(){
+      this.onUnselectedEvent.emit(this.userExercise());
+    }
+
 }
