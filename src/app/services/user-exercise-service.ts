@@ -1,9 +1,9 @@
 import { inject, Injectable } from '@angular/core';
-import { UserExerciseData, UserExerciseDataDto } from '../data/user-exercise/UserExerciseData';
+import { UserExerciseData, UserExerciseDataDto } from '../data/user-exercise/user-exercise-data';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth-service';
-import { ExerciseParams } from '../data/exercise/ExerciseParams';
+import { ExerciseParams } from '../data/exercise/exercise-params';
 const route = 'user-exercises';
 const domain = 'localhost';
 @Injectable({
@@ -19,6 +19,18 @@ export class UserExerciseService {
     return this.http.get<UserExerciseData[]>(`http://${domain}:3000/${route}/my-exercises`,
       {
         params: { ...params },
+        headers: {
+          'Authorization': 'Bearer ' + `${token}`,
+        },
+      }
+    )
+  }
+  async findMultiple(param : number[]){
+    const token = await this.auth.getSession()
+
+    return this.http.get<UserExerciseData[]>(`http://${domain}:3000/${route}/my-exercises-by-ids`,
+      {
+        params: { ids : param.join(",") },
         headers: {
           'Authorization': 'Bearer ' + `${token}`,
         },

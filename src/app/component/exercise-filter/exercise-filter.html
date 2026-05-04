@@ -1,7 +1,7 @@
 <div class="card bg-base-100 shadow-sm">
     <div class="card-body">
-        <p class="font-medium">Filters</p>
-        <label class="input input-ghost bg-base-300 w-full">
+        <p class="font-bold text-lg">Filters</p>
+        <label class="input input-ghost bg-base-300 w-full text-lg">
             <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
                     <circle cx="11" cy="11" r="8"></circle>
@@ -12,8 +12,8 @@
         </label>
 
         <div class="flex gap-2">
-            <div class="flex-1 font-medium">
-                <h3>Category</h3>
+            <div class="flex flex-col gap-2 flex-1 font-bold">
+                <h3 class="text-lg">Category</h3>
                 <select class="select select-ghost bg-base-300 w-full" [formField]="exerciseFilterForm.category">
                     <option selected value="">All</option>
                     @for (category of options.categories; track category) {
@@ -21,8 +21,8 @@
                     }
                 </select>
             </div>
-            <div class="flex-1 font-medium">
-                <h3>Muscle Group</h3>
+            <div class="flex flex-col gap-2  flex-1 font-bold ">
+                <h3 class="text-lg">Muscle Group</h3>
                 <select class="select select-ghost bg-base-300 w-full" [formField]="exerciseFilterForm.muscle_group">
                     <option selected value="">All</option>
                     @for (muscle of options.muscles; track muscle) {

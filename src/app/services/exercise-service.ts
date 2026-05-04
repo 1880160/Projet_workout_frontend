@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserData } from '../data/UserData';
+import { UserData } from '../data/user-data';
 import { AuthService } from './auth-service';
-import { ExerciseData } from '../data/exercise/ExerciseData';
-import { ExerciseParams } from '../data/exercise/ExerciseParams';
+import { ExerciseData } from '../data/exercise/exercise-data';
+import { ExerciseParams } from '../data/exercise/exercise-params';
 const route = 'exercises';
 const domain = 'localhost'
 @Injectable({

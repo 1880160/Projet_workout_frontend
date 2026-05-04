@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { AuthService } from './auth-service';
 import { Observable } from 'rxjs';
-import { UserData } from '../data/UserData';
+import { UserData } from '../data/user-data';
 const route = 'users';
 const domain = 'localhost'
 @Injectable({

@@ -1,12 +1,12 @@
-<div class="card bg-base-100 min-w-100 min-h-75 ">
+<div class="card bg-base-100 min-w-100 shadow-lg">
     <div class="card-body">
-        <div class="flex flex-row">
+        <div class="flex flex-row gap-1">
             <div class="flex-1">
-                <h3 class="font-semibold text-xl">{{userExercise()?.name}}</h3>
+                <h3 class="font-semibold text-3xl">{{userExercise()?.name}}</h3>
                 <p>{{userExercise()?.exercise?.name}}</p>
             </div>
-
-            <div class="flex flex-none flex-row gap-1"  >
+            @if(this.displayMode() == Mode.EDIT){
+            <div class="flex flex-none flex-row gap-1">
                 <button class="btn btn-ghost" (click)="editUserExercise()">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -32,9 +32,10 @@
 
                 </button>
             </div>
+            }
         </div>
         <div class="flex-1">
-            <div class="flex gap-2">
+            <div class="flex flex-wrap gap-2 capitalize ">
                 @for (item of userExercise()?.exercise?.primaryMuscles; track item) {
                 <div class="badge badge-primary font-bold">{{item}}</div>
                 }
@@ -43,47 +44,28 @@
                 }
             </div>
         </div>
-        <div class="grid grid-cols-2 gap-2">
-            <div>
-                <h3 class="text-xl">
-                    Weight
-                </h3>
-                <p class="font-bold">
-                    {{userExercise()?.weight}}lbs
-                </p>
-            </div>
-            <div>
-                <h3 class="text-xl">
-                    Repetitions
-                </h3>
-                <p class="font-bold">
-                    {{userExercise()?.repetition}}
-                </p>
-            </div>
-            <div>
-                <h3 class="text-xl">
-                    Sets
-                </h3>
-                <p class="font-bold">
-                    {{userExercise()?.sets}}
-                </p>
-            </div>
-            <div>
-                <h3 class="text-xl">
-                    Rest Time
-                </h3>
-                <p class="font-bold">
-                    {{userExercise()?.restTime}}s
-                </p>
-            </div>
-            <div>
-                <h3 class="text-xl">
-                    Execution Time
-                </h3>
-                <p class="font-bold">
-                    {{userExercise()?.executionTime}}s
-                </p>
+        @if (this.isCollapsable())
+        {
+        <div class="collapse collapse-arrow">
+            <input type="checkbox" />
+            <div class="collapse-title font-semibold after:start-5 after:end-auto pe-4 ps-12">Details</div>
+            <div class="collapse-content">
+                <app-user-exercise-details [userExercise]="userExercise()" />
             </div>
         </div>
+        }
+        @else() {
+        <app-user-exercise-details [userExercise]="userExercise()" />
+        }
+        @if(this.displayMode() == Mode.SELECTABLE){
+        <div>
+            <button class="btn btn-primary w-full" (click)="selectUserExercise()" >Select Exercise</button>
+        </div>
+        }
+        @if(this.displayMode() == Mode.DESELECTABLE){
+        <div>
+            <button class="btn btn-error w-full" (click)="unSelectUserExercise()" >Deselect Exercise</button>
+        </div>
+        }
     </div>
 </div>

@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { ExerciseDisplay } from '../../../component/exercise-display/exercise-display';
-import { ExerciseData } from '../../../data/exercise/ExerciseData';
+import { ExerciseData } from '../../../data/exercise/exercise-data';
 import { Router } from '@angular/router';
 
 @Component({

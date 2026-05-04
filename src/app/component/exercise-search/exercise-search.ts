@@ -1,9 +1,9 @@
 import { Component, inject, input, InputSignal, output, resource, signal } from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { firstValueFrom } from 'rxjs';
-import { ExerciseData } from '../../data/exercise/ExerciseData';
-import { fieldsOptions } from '../../data/exercise/ExerciseFieldsOptions';
-import { ExerciseParams } from '../../data/exercise/ExerciseParams';
+import { ExerciseData } from '../../data/exercise/exercise-data';
+import { fieldsOptions } from '../../data/exercise/exercise-fields-options';
+import { ExerciseParams } from '../../data/exercise/exercise-params';
 import { ExerciseService } from '../../services/exercise-service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ExerciseDisplay } from '../exercise-display/exercise-display';
@@ -23,11 +23,13 @@ export class ExerciseSearch {
     category: '',
     muscle_group: '',
   });
+
+  exerciseFilterForm = form(this.exerciseFilterModel);
   options = fieldsOptions;
 
   onExerciseSelectedEvent = output<ExerciseData>()
 
-  exerciseFilterForm = form(this.exerciseFilterModel);
+
 
   isSelectable : InputSignal<boolean> = input<boolean>(false);
 

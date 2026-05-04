@@ -1,16 +1,16 @@
 import { Component, ElementRef, inject, resource, signal, viewChild } from '@angular/core';
 import { UserExerciseDisplay } from '../../component/user-exercise-display/user-exercise-display';
 import { ExerciseFilter } from '../../component/exercise-filter/exercise-filter';
-import { UpdateUserExerciseDataDto, UserExerciseData, UserExerciseDataDto } from '../../data/user-exercise/UserExerciseData';
+import { UserExerciseData, UserExerciseDataDto } from '../../data/user-exercise/user-exercise-data';
 import { form } from '@angular/forms/signals';
 import { firstValueFrom, Observable } from 'rxjs';
-import { fieldsOptions } from '../../data/exercise/ExerciseFieldsOptions';
-import { ExerciseParams } from '../../data/exercise/ExerciseParams';
-import { ExerciseService } from '../../services/exercise-service';
+import { fieldsOptions } from '../../data/exercise/exercise-fields-options';
+import { ExerciseParams } from '../../data/exercise/exercise-params';
 import { UserExerciseService } from '../../services/user-exercise-service';
 import { UserExerciseProperties } from '../../component/user-exercise-properties/user-exercise-properties';
 import { PropertiesMode } from '../../data/properties-mode/properties-mode-enum';
 import { Router } from '@angular/router';
+import { DisplayMode } from '../../data/display-mode/display-mode-enum';
 
 @Component({
   selector: 'app-my-exercises',
@@ -40,6 +40,8 @@ export class MyExercises {
   userExerciseEditId = signal(-1);
 
   userExerciseMode = signal<PropertiesMode>(PropertiesMode.CREATE)
+
+  userExerciseDisplayMode = DisplayMode.EDIT
 
   userExercisesData = resource<UserExerciseData[], ExerciseParams>({
     params: () => (this.exerciseFilterForm().value()),

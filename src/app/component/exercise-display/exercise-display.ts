@@ -1,5 +1,5 @@
 import { Component, input, InputSignal, output } from '@angular/core';
-import { ExerciseData } from '../../data/exercise/ExerciseData';
+import { ExerciseData } from '../../data/exercise/exercise-data';
 
 @Component({
   selector: 'app-exercise-display',

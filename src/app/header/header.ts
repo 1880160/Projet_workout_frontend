@@ -3,7 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../services/auth-service';
 import { UserService } from '../services/user-service';
 import { firstValueFrom, Observable } from 'rxjs';
-import { UserData } from '../data/UserData';
+import { UserData } from '../data/user-data';
 
 @Component({
   selector: 'app-header',

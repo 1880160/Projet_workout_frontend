@@ -13,16 +13,13 @@
         </div>
     </div>
     <div class="flex flex-col gap-5 p-4">
-        <div class="flexflex-1">
-            <h2 class="text-lg font-bold text-base-content">My Exercises</h2>
-        </div>
         <div>
             <app-exercise-filter (onFiltersUpdated)="onUpdatedfilter($event)"></app-exercise-filter>
         </div>
         <div class="flex flex-1">
             <div class="flex flex-wrap gap-4">
                 @for (userExercise of userExercisesData.value(); track $index) {
-                    <app-user-exercise-display (onDeleteEvent)="deleteUserProperties($event)" (onEditEvent)="editUserExerciseProperties($event)" [userExercise]="userExercise"></app-user-exercise-display>
+                    <app-user-exercise-display (onDeleteEvent)="deleteUserProperties($event)" (onEditEvent)="editUserExerciseProperties($event)" [userExercise]="userExercise" [displayMode]="userExerciseDisplayMode"></app-user-exercise-display>
                 }
 
             </div>

@@ -1,5 +1,5 @@
-import { ExerciseData } from "../exercise/ExerciseData"
-import { UserData } from "../UserData"
+import { ExerciseData } from "../exercise/exercise-data"
+import { UserData } from "../user-data"
 
 export  interface UserExerciseData {
 
@@ -37,8 +37,4 @@ export interface UserExerciseDataDto {
     executionTime : number
     exerciseId : number
     
-}
-
-export interface UpdateUserExerciseDataDto extends UserExerciseDataDto{
-    userExerciseId : number
 }
