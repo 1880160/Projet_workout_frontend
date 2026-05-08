@@ -2,7 +2,7 @@
     <div class="card-body">
         <div class="flex flex-row gap-1">
             <div class="flex-1">
-                <h3 class="font-semibold text-3xl">{{userExercise()?.name}}</h3>
+                <h3 class="font-extrabold text-3xl">{{userExercise()?.name}}</h3>
                 <p>{{userExercise()?.exercise?.name}}</p>
             </div>
             @if(this.displayMode() == Mode.EDIT){
@@ -37,10 +37,18 @@
         <div class="flex-1">
             <div class="flex flex-wrap gap-2 capitalize ">
                 @for (item of userExercise()?.exercise?.primaryMuscles; track item) {
-                <div class="badge badge-primary font-bold">{{item}}</div>
+                <div class="badge font-bold capitalize badge-primary badge-large p-3">
+                    <p class="text-lg">
+                    {{item}}
+                    </p>
+                </div>
                 }
                 @for (item of userExercise()?.exercise?.secondaryMuscles; track item) {
-                <div class="badge badge-secondary font-bold">{{item}}</div>
+                <div class="badge font-bold capitalize badge-secondary badge-large p-3 ">
+                    <p class="text-lg">
+                    {{item}}
+                    </p>
+                </div>
                 }
             </div>
         </div>
@@ -48,7 +56,7 @@
         {
         <div class="collapse collapse-arrow">
             <input type="checkbox" />
-            <div class="collapse-title font-semibold after:start-5 after:end-auto pe-4 ps-12">Details</div>
+            <div class="collapse-title font-semibold text-xl after:start-5 after:end-auto pe-4 ps-12">Details</div>
             <div class="collapse-content">
                 <app-user-exercise-details [userExercise]="userExercise()" />
             </div>
