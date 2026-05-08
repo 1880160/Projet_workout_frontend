@@ -7,6 +7,7 @@ import { ExerciseData } from '../../data/exercise/exercise-data';
 import { firstValueFrom, identity, single } from 'rxjs';
 import { PropertiesMode } from '../../data/properties-mode/properties-mode-enum';
 import { ExerciseService } from '../../services/exercise-service';
+import { DisplayMode } from '../../data/display-mode/display-mode-enum';
 
 @Component({
   selector: 'app-user-exercise-properties',
@@ -17,6 +18,9 @@ import { ExerciseService } from '../../services/exercise-service';
 export class UserExerciseProperties {
 
   mode = input<PropertiesMode>(PropertiesMode.CREATE);
+
+  exerciseDisplayMode = DisplayMode.SELECTABLE
+
   errorMessage = input<string>('')
 
   onCloseEvent = output();

@@ -2,5 +2,6 @@ export enum DisplayMode {
     DEFAULT,
     EDIT,
     SELECTABLE,
-    DESELECTABLE
+    DESELECTABLE,
+    APPROVABLE,
 }

@@ -1,6 +1,12 @@
+import { UserData } from "../user-data"
+
 export interface ExerciseData extends PostExerciseData {
     exerciseId : number
 }
+export interface ExerciseRequestData extends ExerciseData {
+    user : UserData
+}
+
 
 export interface PostExerciseData {
     name : string

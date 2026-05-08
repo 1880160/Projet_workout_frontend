@@ -11,6 +11,8 @@ import { ExerciseSearch } from '../../component/exercise-search/exercise-search'
 import { ExerciseProperties } from '../../component/exercise-properties/exercise-properties';
 import { ExerciseRequestService } from '../../services/exercise-request-service';
 import { Router } from '@angular/router';
+import { UserData } from '../../data/user-data';
+import { UserService } from '../../services/user-service';
 
 
 // about : select formfield in angular : https://stackoverflow.com/questions/52371278/cant-bind-to-formcontrol-since-it-isnt-a-known-property-of-select
@@ -29,6 +31,20 @@ export class Exercises {
   exercises = inject(ExerciseService)
 
   exerciseRequest = inject(ExerciseRequestService);
+
+  user = inject(UserService);
+
+
+  userData = resource<UserData, null>({
+    loader: async () => firstValueFrom<UserData>(await this.user.userInfo())
+  })
+
+  requestCount = resource<number,null>(
+    {
+      loader : async () => firstValueFrom<number>(await this.exerciseRequest.count())
+    }
+  )
+
 
 
   exerciseRequestError = signal('')
@@ -50,26 +66,29 @@ export class Exercises {
     }
   })
 
-  async onNewExerciseRequest($event : PostExerciseData){
+  async onNewExerciseRequest($event: PostExerciseData) {
     (await this.exerciseRequest.create($event)).subscribe(
       {
-        next : () => this.closeModal(),
-        error : (error) => this.exerciseRequestError.set(error.error?.message)
+        next: () => {
+          this.closeModal();
+          this.requestCount.reload();
+        },
+        error: (error) => this.exerciseRequestError.set(error.error?.message)
       }
     )
   }
 
-  async closeModal(){
-     const dialog = this.dialogueRef()?.nativeElement  as HTMLDialogElement
-     dialog?.close();
-     this.exerciseRequestError.set('')
+  async closeModal() {
+    const dialog = this.dialogueRef()?.nativeElement as HTMLDialogElement
+    dialog?.close();
+    this.exerciseRequestError.set('')
   }
-  async showModal(){
-    const dialog = this.dialogueRef()?.nativeElement  as HTMLDialogElement
+  async showModal() {
+    const dialog = this.dialogueRef()?.nativeElement as HTMLDialogElement
     dialog?.showModal();
   }
 
-  navigateSubmissions(){
+  navigateSubmissions() {
     this.router.navigate(['/exercises/review'])
   }
 }

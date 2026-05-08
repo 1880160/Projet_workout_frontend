@@ -8,6 +8,7 @@ import { ExerciseService } from '../../services/exercise-service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ExerciseDisplay } from '../exercise-display/exercise-display';
 import { ExerciseFilter } from '../exercise-filter/exercise-filter';
+import { DisplayMode } from '../../data/display-mode/display-mode-enum';
 
 @Component({
   selector: 'app-exercise-search',
@@ -29,9 +30,7 @@ export class ExerciseSearch {
 
   onExerciseSelectedEvent = output<ExerciseData>()
 
-
-
-  isSelectable : InputSignal<boolean> = input<boolean>(false);
+  exerciseDisplayMode = input(DisplayMode.DEFAULT)
 
   exercisesData = resource<ExerciseData[], ExerciseParams>({
     params: () => (this.exerciseFilterForm().value()),

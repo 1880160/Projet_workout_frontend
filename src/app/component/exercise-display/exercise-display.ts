@@ -1,5 +1,6 @@
-import { Component, input, InputSignal, output } from '@angular/core';
-import { ExerciseData } from '../../data/exercise/exercise-data';
+import { Component, computed, input, InputSignal, output } from '@angular/core';
+import { ExerciseData, ExerciseRequestData } from '../../data/exercise/exercise-data';
+import { DisplayMode } from '../../data/display-mode/display-mode-enum';
 
 @Component({
   selector: 'app-exercise-display',
@@ -8,13 +9,31 @@ import { ExerciseData } from '../../data/exercise/exercise-data';
   styleUrl: './exercise-display.css',
 })
 export class ExerciseDisplay {
-  exercise : InputSignal<ExerciseData | undefined> = input<ExerciseData>()
-  isSelectable : InputSignal<boolean> = input<boolean>(false);
-  onClickEvent = output<ExerciseData | undefined>()
+  exercise: InputSignal<ExerciseData | ExerciseRequestData | undefined> = input<ExerciseData>()
+  Mode = DisplayMode
+  displayMode = input(DisplayMode.DEFAULT);
+
+  onClickEvent = output<ExerciseData | ExerciseRequestData | undefined>()
+  onRejectEvent = output<ExerciseRequestData>()
+  onApproveEvent = output<ExerciseRequestData>()
+
+  userData = computed(()=> (this.exercise() as ExerciseRequestData).user ?? null)
 
 
-  execiseClick(){
+  execiseClick() {
     this.onClickEvent.emit(this.exercise());
+  }
+  approveExercise(){
+    if (this.exercise()){
+      const exerciseRequestData = this.exercise() as ExerciseRequestData
+      this.onApproveEvent.emit(exerciseRequestData)
+    }
+  }
+  rejectExercise(){
+    if (this.exercise()){
+      const exerciseRequestData = this.exercise() as ExerciseRequestData
+      this.onRejectEvent.emit(exerciseRequestData)
+    }
   }
 
 }

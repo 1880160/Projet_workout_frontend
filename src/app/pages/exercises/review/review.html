@@ -1,4 +1,4 @@
-<div class="bg-base-300 h-screen p-4">
+<div class="bg-base-300 w-screen min-h-screen  p-4">
     <div class="flex flex-row gap-5 p-5">
         <div class="flex-none align-center">
             <button class="btn" (click)="navigateExercise()">Back to exercises</button>
@@ -11,24 +11,14 @@
             <h2 class="badge font-semibold badge-primary">Admin Panel</h2>
         </div>
     </div>
-    <div class="card bg-base-100">
-        <div class="card-body">
+    <div class="card bg-base-200">
 
-            <div class="card bg-base-200">
-                <div class="card-body">
-                    <app-exercise-display [exercise]="testExercise()"></app-exercise-display>
-                    <p>Hello world!</p>
-                </div>
-            </div>
-        </div>
         <div class="card-body">
+            @for (exerciseRequest of this.exercisesRequestData.value(); track $index) {
 
-            <div class="card bg-base-200">
-                <div class="card-body">
-                    <app-exercise-display [exercise]="testExercise()"></app-exercise-display>
-                    <p>Hello world!</p>
-                </div>
-            </div>
+                <app-exercise-display (onRejectEvent)="deleteExerciseRequest($event)"  (onApproveEvent)="approveExerciseRequest($event)" [displayMode]="displayModeApprouvable" [exercise]="exerciseRequest"></app-exercise-display>
+            }
+        
         </div>
     </div>
 </div>
