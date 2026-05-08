@@ -17,7 +17,7 @@ export class App {
   protected readonly title = signal('Projet_workout_frontend');
   isLogged = signal(this.auth.isLoggedIn());
 
-  handlerId? : number
+  handlerId?: number
 
 
   constructor() {
@@ -26,29 +26,38 @@ export class App {
         if (event instanceof NavigationStart) {
           // Navigation starting
           this.isLogged.set(this.auth.isLoggedIn());
-          if( this.auth.isLoggedIn()){
-          // Token refresh, for testing (and maybe prod?) should refresh every minute.
-          clearInterval(this.handlerId)
-          const test = new Observable((subscriber) => {
-            subscriber.next('start')
-            this.handlerId = setInterval(() => {
-              subscriber.next((this.auth.getExpirationDate().getTime() - (new Date()).getTime())/10)
-            },(this.auth.getExpirationDate().getTime() - (new Date()).getTime())/10 )
+          if (this.auth.isLoggedIn()) {
+            // Token refresh, for testing (and maybe prod?) should refresh every minute.
+            clearInterval(this.handlerId)
+            const test = new Observable((subscriber) => {
+              subscriber.next('start')
+              this.handlerId = setInterval(() => {
+                subscriber.next((this.auth.getExpirationDate().getTime() - (new Date()).getTime()) / 10)
+              }, (this.auth.getExpirationDate().getTime() - (new Date()).getTime()) / 10)
+            }
+            )
+            test.subscribe({
+              next: async (next) => (await this.auth.refreshLogin()).subscribe(
+                {
+                  next: this.auth.setSession,
+                  error: () => 
+                    {
+                      clearInterval(this.handlerId)
+                      this.auth.reset();
+                    }
+                }
+              )
+            })
           }
-          )
-          test.subscribe({
-            next: async (next) => await this.auth.refreshLogin()
-          })
+          console.log('Navigation starting:', event.url);
         }
-        console.log('Navigation starting:', event.url);
-      }
-      if (event instanceof NavigationEnd) {
+        if (event instanceof NavigationEnd) {
 
-      // Navigation completed
-      console.log('Navigation completed:', event.url);
-    }
-  });
+          // Navigation completed
+          console.log('Navigation completed:', event.url);
+        }
+      });
 
-}
+  }
 
 }

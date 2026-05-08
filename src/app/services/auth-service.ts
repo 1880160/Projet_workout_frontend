@@ -40,11 +40,7 @@ export class AuthService {
       headers : {
         'Authorization' : 'Bearer '+`${ await this.getSession()}`,
       },
-    }).subscribe(
-      {
-        next : this.setSession
-      }
-    )
+    })
   }
 
   async getSession(){
@@ -52,8 +48,9 @@ export class AuthService {
       return this.getSessionOrError();
     }
     catch(error){
+      this.reset()
       alert(error)
-      this.router.navigate(['/sign-in'])
+      
     }
     return null;
   }
@@ -74,6 +71,10 @@ export class AuthService {
   logout(){
     localStorage.removeItem("jwtToken_access_token");
     localStorage.removeItem("jwtToken_expire_date");
+  }
+  reset(){
+    this.logout();
+    this.router.navigate(['/sign-in'])
   }
 
   isLoggedIn(){

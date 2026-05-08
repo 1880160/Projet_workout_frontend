@@ -88,8 +88,7 @@
  
                 </div>
                 
-                <app-exercise-search [isSelectable]="true"
-                    (onExerciseSelectedEvent)="exerciseSelected($event)"></app-exercise-search>
+                <app-exercise-search [exerciseDisplayMode]="exerciseDisplayMode" (onExerciseSelectedEvent)="exerciseSelected($event)"></app-exercise-search>
             </div>
         </dialog>
     </div>

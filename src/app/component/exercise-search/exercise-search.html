@@ -10,7 +10,7 @@
         </div>
         <div class="grid grid-cols-2 p-4 gap-10">
             @for (exercise of exercisesData.value(); track exercise.exerciseId) {
-            <app-exercise-display [isSelectable]="isSelectable()" [exercise]="exercise" (onClickEvent)="onExerciseSelected($event)"></app-exercise-display>
+            <app-exercise-display  [displayMode]="exerciseDisplayMode()" [exercise]="exercise" (onClickEvent)="onExerciseSelected($event)"></app-exercise-display>
             }
         </div>
     </div>

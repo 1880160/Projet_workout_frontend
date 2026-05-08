@@ -5,31 +5,41 @@
             <h2 class="text-4xl font-bold text-base-content">Exercise Library</h2>
             <p class="text-info-content">Browse and explore different exercises</p>
         </div>
+        @if (this.userData.value()?.userType == 1) {
         <div class="flex flex-none">
-            <button class="btn btn-primary" (click)="navigateSubmissions()">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_38_111)">
-                        <path
-                            d="M13.3333 8.66666C13.3333 12 11 13.6667 8.22663 14.6333C8.0814 14.6825 7.92365 14.6802 7.77996 14.6267C4.99996 13.6667 2.66663 12 2.66663 8.66666V4C2.66663 3.82319 2.73686 3.65362 2.86189 3.52859C2.98691 3.40357 3.15648 3.33333 3.33329 3.33333C4.66663 3.33333 6.33329 2.53333 7.49329 1.52C7.63453 1.39933 7.8142 1.33303 7.99996 1.33303C8.18572 1.33303 8.36539 1.39933 8.50663 1.52C9.67329 2.54 11.3333 3.33333 12.6666 3.33333C12.8434 3.33333 13.013 3.40357 13.138 3.52859C13.2631 3.65362 13.3333 3.82319 13.3333 4V8.66666Z"
-                            stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                    </g>
-                    <defs>
-                        <clipPath id="clip0_38_111">
-                            <rect width="16" height="16" fill="white" />
-                        </clipPath>
-                    </defs>
-                </svg>
+            <div class="indicator indicator-start">
+                @if(this.requestCount.value() ?? 0 > 0){
+                <div class="indicator-item badge badge-secondary">
+                    <p>{{this.requestCount.value() ?? 0}}</p>
+                </div>
+                }
 
-                Review submissions</button>
+                <button class="btn btn-primary" (click)="navigateSubmissions()">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_38_111)">
+                            <path
+                                d="M13.3333 8.66666C13.3333 12 11 13.6667 8.22663 14.6333C8.0814 14.6825 7.92365 14.6802 7.77996 14.6267C4.99996 13.6667 2.66663 12 2.66663 8.66666V4C2.66663 3.82319 2.73686 3.65362 2.86189 3.52859C2.98691 3.40357 3.15648 3.33333 3.33329 3.33333C4.66663 3.33333 6.33329 2.53333 7.49329 1.52C7.63453 1.39933 7.8142 1.33303 7.99996 1.33303C8.18572 1.33303 8.36539 1.39933 8.50663 1.52C9.67329 2.54 11.3333 3.33333 12.6666 3.33333C12.8434 3.33333 13.013 3.40357 13.138 3.52859C13.2631 3.65362 13.3333 3.82319 13.3333 4V8.66666Z"
+                                stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_38_111">
+                                <rect width="16" height="16" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
 
+                    Review submissions</button>
+            </div>
         </div>
+        }
     </div>
     <div class="p-2">
         <button class="btn btn-primary" (click)="showModal()">
             + Add Exercise
         </button>
         <dialog #properties_modal class="modal">
-            <app-exercise-properties (onPostData)="onNewExerciseRequest($event)" [errorMessage]="exerciseRequestError()" (onClose)="closeModal()"></app-exercise-properties>
+            <app-exercise-properties (onPostData)="onNewExerciseRequest($event)" [errorMessage]="exerciseRequestError()"
+                (onClose)="closeModal()"></app-exercise-properties>
         </dialog>
     </div>
     <app-exercise-search>
