@@ -1,1 +1,100 @@
-<p>home works!</p>
+<div class="bg-base-300 w-screen min-h-screen p-5 flex flex-col gap-5">
+    <div class="w-fill flex flex-row">
+        <div class="flex flex-1 flex-col">
+            <h2 class="text-4xl font-bold text-base-content">Home</h2>
+            <p class="text-info-content">Welcome back, {{ this.userData.value()?.username }}! ready for your next
+                workout? </p>
+        </div>
+        <div class="flex flex-none">
+            <button class="btn btn-primary p-5 text-lg" routerLink="/my-workouts/new">
+                +
+                Create Workout </button>
+        </div>
+    </div>
+    <div class=" card outline-1 outline-neutral-content p-4 min-h-50 rounded-lg bg-base-100">
+        <div class="card-title flex ">
+            <div class="flex-1">
+                <p>Muscles targeted this week</p>
+            </div>
+            <div class="flex-none">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 12L8 8" stroke="#4A5565" stroke-width="1.66667" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path
+                        d="M15.5475 17.9042C15.2349 18.2168 14.811 18.3925 14.369 18.3925C13.927 18.3926 13.503 18.2171 13.1904 17.9046C12.8778 17.5921 12.7021 17.1682 12.702 16.7261C12.7019 16.2841 12.8774 15.8601 13.19 15.5475L11.7175 17.0208C11.4048 17.3335 10.9808 17.5091 10.5387 17.5091C10.0966 17.5091 9.67258 17.3335 9.35996 17.0208C9.04733 16.7082 8.8717 16.2842 8.8717 15.8421C8.8717 15.4 9.04733 14.976 9.35996 14.6633L14.6633 9.36C14.9759 9.04738 15.3999 8.87175 15.842 8.87175C16.2842 8.87175 16.7082 9.04738 17.0208 9.36C17.3334 9.67263 17.509 10.0966 17.509 10.5388C17.509 10.9809 17.3334 11.4049 17.0208 11.7175L15.5475 13.19C15.8601 12.8775 16.284 12.702 16.7261 12.702C17.1681 12.7021 17.592 12.8778 17.9045 13.1904C18.2171 13.503 18.3926 13.927 18.3925 14.369C18.3924 14.8111 18.2167 15.235 17.9041 15.5475L15.5475 17.9042Z"
+                        stroke="#4A5565" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M17.9167 17.9167L16.75 16.75" stroke="#4A5565" stroke-width="1.66667"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M3.25004 3.24999L2.08337 2.08333" stroke="#4A5565" stroke-width="1.66667"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <path
+                        d="M5.33663 10.64C5.02401 10.9526 4.6 11.1282 4.15788 11.1282C3.71576 11.1282 3.29176 10.9526 2.97913 10.64C2.66651 10.3274 2.49088 9.90336 2.49088 9.46125C2.49088 9.01913 2.66651 8.59512 2.97913 8.2825L4.45246 6.81C4.29767 6.96474 4.11391 7.08747 3.91168 7.1712C3.70945 7.25492 3.49271 7.29799 3.27384 7.29795C2.8318 7.29788 2.40789 7.1222 2.09538 6.80958C1.94064 6.65478 1.8179 6.47102 1.73418 6.2688C1.65046 6.06657 1.60738 5.84983 1.60742 5.63095C1.6075 5.18891 1.78317 4.76501 2.0958 4.4525L4.45246 2.09583C4.76498 1.7832 5.18888 1.60753 5.63092 1.60745C5.8498 1.60741 6.06654 1.65049 6.26876 1.73421C6.47099 1.81793 6.65475 1.94067 6.80955 2.09541C6.96434 2.25015 7.08715 2.43387 7.17094 2.63607C7.25474 2.83827 7.29789 3.05499 7.29792 3.27387C7.29796 3.49274 7.25489 3.70948 7.17117 3.91171C7.08744 4.11394 6.96471 4.2977 6.80996 4.4525L8.28246 2.97916C8.59509 2.66654 9.0191 2.49091 9.46121 2.49091C9.90333 2.49091 10.3273 2.66654 10.64 2.97916C10.9526 3.29179 11.1282 3.7158 11.1282 4.15791C11.1282 4.60003 10.9526 5.02404 10.64 5.33666L5.33663 10.64Z"
+                        stroke="#4A5565" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="flex flex-1 flex-wrap gap-2">
+                @for (item of this.exerciseList(); track $index)
+                {
+                <div class="badge font-bold capitalize badge-primary badge-large p-3">
+                    <p class="text-primary-content text-lg">
+                        {{item}}
+                    </p>
+                </div>
+                }
+                @empty {
+                <div>
+                    <p class=" text-xl text-neutral-content font-semibold">
+                        No workouts this week yet
+                    </p>
+                    <p class="text-neutral-content font-semibold">
+                        Create a workout to see which muscles you're targeting!
+                    </p>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div>
+        <h3 class="text-2xl font-semibold text-base-content">Incoming workouts</h3>
+    </div>
+    <div class=" card outline-1 outline-neutral-content p-4 min-h-50 rounded-lg bg-base-100">
+        <div class="card-body">
+
+
+            <div class="flex flex-wrap gap-2 p-2 w-fill">
+                @for (workout of IncomingWorkouts(); track $index) {
+                <app-workout-display [workout]="workout" />
+                }
+
+                @empty {
+                <div class="grid-cols-1 w-fill justify-center gap-2">
+                    <div class="">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M28.8 28.8L19.2 19.2" stroke="#99A1AF" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path
+                                d="M37.314 42.97C36.564 43.7203 35.5466 44.1419 34.4857 44.1421C33.4248 44.1423 32.4073 43.721 31.657 42.971C30.9067 42.221 30.4851 41.2036 30.4849 40.1427C30.4847 39.0818 30.906 38.0643 31.656 37.314L28.122 40.85C27.3717 41.6003 26.3541 42.0218 25.293 42.0218C24.2319 42.0218 23.2143 41.6003 22.464 40.85C21.7137 40.0997 21.2922 39.0821 21.2922 38.021C21.2922 36.9599 21.7137 35.9423 22.464 35.192L35.192 22.464C35.9423 21.7137 36.9599 21.2922 38.021 21.2922C39.0821 21.2922 40.0997 21.7137 40.85 22.464C41.6003 23.2143 42.0218 24.2319 42.0218 25.293C42.0218 26.3541 41.6003 27.3717 40.85 28.122L37.314 31.656C38.0643 30.906 39.0818 30.4847 40.1427 30.4849C41.2036 30.4851 42.221 30.9067 42.971 31.657C43.721 32.4073 44.1423 33.4248 44.1421 34.4857C44.1419 35.5466 43.7203 36.564 42.97 37.314L37.314 42.97Z"
+                                stroke="#99A1AF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M43 43L40.2 40.2" stroke="#99A1AF" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M7.8 7.8L5 5" stroke="#99A1AF" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path
+                                d="M12.808 25.536C12.0577 26.2863 11.0401 26.7078 9.97901 26.7078C8.91793 26.7078 7.90031 26.2863 7.15001 25.536C6.39972 24.7857 5.9782 23.7681 5.9782 22.707C5.9782 21.6459 6.39972 20.6283 7.15001 19.878L10.686 16.344C10.3145 16.7154 9.87348 17.01 9.38813 17.2109C8.90278 17.4118 8.38261 17.5152 7.85731 17.5151C6.79641 17.5149 5.77905 17.0933 5.02901 16.343C4.65763 15.9715 4.36307 15.5305 4.16213 15.0451C3.96119 14.5598 3.85782 14.0396 3.85791 13.5143C3.8581 12.4534 4.27972 11.436 5.03001 10.686L10.686 5.03001C11.436 4.27972 12.4534 3.8581 13.5143 3.85791C14.0396 3.85782 14.5598 3.96119 15.0451 4.16213C15.5305 4.36307 15.9715 4.65763 16.343 5.02901C16.7145 5.40039 17.0092 5.84131 17.2104 6.32659C17.4115 6.81187 17.515 7.33201 17.5151 7.85731C17.5152 8.38261 17.4118 8.90278 17.2109 9.38813C17.01 9.87348 16.7154 10.3145 16.344 10.686L19.878 7.15001C20.6283 6.39972 21.6459 5.9782 22.707 5.9782C23.7681 5.9782 24.7857 6.39972 25.536 7.15001C26.2863 7.90031 26.7078 8.91793 26.7078 9.97901C26.7078 11.0401 26.2863 12.0577 25.536 12.808L12.808 25.536Z"
+                                stroke="#99A1AF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="">
+                        <p class="text-neutral-content font-semibold">
+                            No upcoming working scheduled!, you will see workout planned for today and tomorrow here
+                        </p>
+                    </div>
+                </div>
+                }
+
+            </div>
+        </div>
+    </div>
