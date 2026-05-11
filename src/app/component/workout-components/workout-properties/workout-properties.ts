@@ -10,10 +10,10 @@ import { firstValueFrom } from 'rxjs';
 import { UserExerciseDisplay } from '../../user-exercise-display/user-exercise-display';
 import { DisplayMode } from '../../../data/display-mode/display-mode-enum';
 import { RouterLink } from "@angular/router";
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-workout-properties',
-  imports: [FormField, UserExerciseSearch, UserExerciseDisplay, RouterLink],
+  imports: [FormField, UserExerciseSearch, UserExerciseDisplay],
   templateUrl: './workout-properties.html',
   styleUrl: './workout-properties.css',
 })
@@ -93,4 +93,9 @@ export class WorkoutProperties {
   }
 
   workoutPropertiesMode = input(PropertiesMode.CREATE);
+
+  location = inject(Location)
+  navigateBack(){
+    this.location.back()
+  }
 }
