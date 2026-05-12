@@ -1,7 +1,7 @@
 import { Component, computed, effect, input, output, signal } from '@angular/core';
 import { FieldTree, form, FormField } from '@angular/forms/signals';
-import { fieldsOptions } from '../../data/exercise/exercise-fields-options';
-import { ExerciseParams } from '../../data/exercise/exercise-params';
+import { fieldsOptions } from '../../../data/exercise/exercise-fields-options';
+import { ExerciseParams } from '../../../data/exercise/exercise-params';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, computed, input, InputSignal, output } from '@angular/core';
 import { WorkoutData } from '../../../data/workout/workout-data';
-import { UserExerciseDisplay } from '../../user-exercise-display/user-exercise-display';
+import { UserExerciseDisplay } from '../../user-exercise-components/user-exercise-display/user-exercise-display';
 import { DisplayMode } from '../../../data/display-mode/display-mode-enum';
 
 @Component({

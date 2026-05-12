@@ -1,13 +1,13 @@
 import { Component, ElementRef, inject, resource, signal, viewChild } from '@angular/core';
-import { UserExerciseDisplay } from '../../component/user-exercise-display/user-exercise-display';
-import { ExerciseFilter } from '../../component/exercise-filter/exercise-filter';
+import { UserExerciseDisplay } from '../../component/user-exercise-components/user-exercise-display/user-exercise-display';
+import { ExerciseFilter } from '../../component/exercise-components/exercise-filter/exercise-filter';
 import { UserExerciseData, UserExerciseDataDto } from '../../data/user-exercise/user-exercise-data';
 import { form } from '@angular/forms/signals';
 import { firstValueFrom, Observable } from 'rxjs';
 import { fieldsOptions } from '../../data/exercise/exercise-fields-options';
 import { ExerciseParams } from '../../data/exercise/exercise-params';
 import { UserExerciseService } from '../../services/user-exercise-service';
-import { UserExerciseProperties } from '../../component/user-exercise-properties/user-exercise-properties';
+import { UserExerciseProperties } from '../../component/user-exercise-components/user-exercise-properties/user-exercise-properties';
 import { PropertiesMode } from '../../data/properties-mode/properties-mode-enum';
 import { Router } from '@angular/router';
 import { DisplayMode } from '../../data/display-mode/display-mode-enum';

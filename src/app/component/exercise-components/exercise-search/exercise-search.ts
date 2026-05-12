@@ -1,14 +1,14 @@
 import { Component, inject, input, InputSignal, output, resource, signal } from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { firstValueFrom } from 'rxjs';
-import { ExerciseData } from '../../data/exercise/exercise-data';
-import { fieldsOptions } from '../../data/exercise/exercise-fields-options';
-import { ExerciseParams } from '../../data/exercise/exercise-params';
-import { ExerciseService } from '../../services/exercise-service';
+import { ExerciseData } from '../../../data/exercise/exercise-data';
+import { fieldsOptions } from '../../../data/exercise/exercise-fields-options';
+import { ExerciseParams } from '../../../data/exercise/exercise-params';
+import { ExerciseService } from '../../../services/exercise-service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ExerciseDisplay } from '../exercise-display/exercise-display';
 import { ExerciseFilter } from '../exercise-filter/exercise-filter';
-import { DisplayMode } from '../../data/display-mode/display-mode-enum';
+import { DisplayMode } from '../../../data/display-mode/display-mode-enum';
 
 @Component({
   selector: 'app-exercise-search',

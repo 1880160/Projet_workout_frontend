@@ -1,5 +1,5 @@
 import { Component, input, InputSignal } from '@angular/core';
-import { UserExerciseData } from '../../../data/user-exercise/user-exercise-data';
+import { UserExerciseData } from '../../../../data/user-exercise/user-exercise-data';
 
 @Component({
   selector: 'app-user-exercise-details',

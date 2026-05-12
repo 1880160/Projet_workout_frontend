@@ -1,6 +1,6 @@
 import { Component, computed, input, InputSignal, output } from '@angular/core';
-import { ExerciseData, ExerciseRequestData } from '../../data/exercise/exercise-data';
-import { DisplayMode } from '../../data/display-mode/display-mode-enum';
+import { ExerciseData, ExerciseRequestData } from '../../../data/exercise/exercise-data';
+import { DisplayMode } from '../../../data/display-mode/display-mode-enum';
 
 @Component({
   selector: 'app-exercise-display',

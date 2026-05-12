@@ -3,11 +3,11 @@ import { PropertiesMode } from '../../../data/properties-mode/properties-mode-en
 import { WeekDays } from '../../../data/workout/weekdays-enum';
 import { WorkoutDataDto, WorkoutPropertiesDto } from '../../../data/workout/workout-data';
 import { form, FormField } from '@angular/forms/signals';
-import { UserExerciseSearch } from '../../user-exercise-search/user-exercise-search';
+import { UserExerciseSearch } from '../../user-exercise-components/user-exercise-search/user-exercise-search';
 import { UserExerciseData } from '../../../data/user-exercise/user-exercise-data';
 import { UserExerciseService } from '../../../services/user-exercise-service';
 import { firstValueFrom } from 'rxjs';
-import { UserExerciseDisplay } from '../../user-exercise-display/user-exercise-display';
+import { UserExerciseDisplay } from '../../user-exercise-components/user-exercise-display/user-exercise-display';
 import { DisplayMode } from '../../../data/display-mode/display-mode-enum';
 import { RouterLink } from "@angular/router";
 import { Location } from '@angular/common';

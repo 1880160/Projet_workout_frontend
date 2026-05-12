@@ -1,5 +1,5 @@
 import { Component, ElementRef, inject, input, output, resource, signal, viewChild } from '@angular/core';
-import { ExerciseDisplay } from '../../component/exercise-display/exercise-display';
+import { ExerciseDisplay } from '../../component/exercise-components/exercise-display/exercise-display';
 import { ExerciseData, PostExerciseData } from '../../data/exercise/exercise-data';
 import { ExerciseService } from '../../services/exercise-service';
 import { firstValueFrom } from 'rxjs';
@@ -7,8 +7,8 @@ import { ExerciseParams } from '../../data/exercise/exercise-params';
 import { form, FormField } from '@angular/forms/signals';
 import { ReactiveFormsModule } from '@angular/forms';
 import { fieldsOptions } from '../../data/exercise/exercise-fields-options';
-import { ExerciseSearch } from '../../component/exercise-search/exercise-search';
-import { ExerciseProperties } from '../../component/exercise-properties/exercise-properties';
+import { ExerciseSearch } from '../../component/exercise-components/exercise-search/exercise-search';
+import { ExerciseProperties } from '../../component/exercise-components/exercise-properties/exercise-properties';
 import { ExerciseRequestService } from '../../services/exercise-request-service';
 import { Router } from '@angular/router';
 import { UserData } from '../../data/user-data';

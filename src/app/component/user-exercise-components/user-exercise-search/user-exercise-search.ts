@@ -1,13 +1,13 @@
 import { Component, inject, input, InputSignal, output, resource, signal } from '@angular/core';
 import { form } from '@angular/forms/signals';
-import { ExerciseParams } from '../../data/exercise/exercise-params';
-import { ExerciseFilter } from '../exercise-filter/exercise-filter';
+import { ExerciseParams } from '../../../data/exercise/exercise-params';
+import { ExerciseFilter } from '../../exercise-components/exercise-filter/exercise-filter';
 import { firstValueFrom } from 'rxjs';
-import { ExerciseData } from '../../data/exercise/exercise-data';
-import { UserExerciseService } from '../../services/user-exercise-service';
-import { UserExerciseData } from '../../data/user-exercise/user-exercise-data';
+import { ExerciseData } from '../../../data/exercise/exercise-data';
+import { UserExerciseService } from '../../../services/user-exercise-service';
+import { UserExerciseData } from '../../../data/user-exercise/user-exercise-data';
 import { UserExerciseDisplay } from '../user-exercise-display/user-exercise-display';
-import { DisplayMode } from '../../data/display-mode/display-mode-enum';
+import { DisplayMode } from '../../../data/display-mode/display-mode-enum';
 
 @Component({
   selector: 'app-user-exercise-search',

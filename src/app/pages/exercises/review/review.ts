@@ -1,5 +1,5 @@
 import { Component, inject, resource, signal } from '@angular/core';
-import { ExerciseDisplay } from '../../../component/exercise-display/exercise-display';
+import { ExerciseDisplay } from '../../../component/exercise-components/exercise-display/exercise-display';
 import { ExerciseData, ExerciseRequestData } from '../../../data/exercise/exercise-data';
 import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
