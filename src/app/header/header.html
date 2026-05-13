@@ -103,7 +103,11 @@
             </button>
             <div class="flex flex-1 gap-2">
                 <div class="divider divider-horizontal"></div>
-                <button class="btn btn-ghost">
+                <div class="indicator indicator-start">
+                    @if (notificationsData.value().length > 0){
+                     <span class="indicator-item badge badge-secondary mt-2 mr-2">{{notificationsData.value().length}}</span>
+                     }
+                <button class="btn btn-ghost" (click)="showModal()">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M6.84534 14C6.96237 14.2027 7.13068 14.371 7.33337 14.488C7.53605 14.605 7.76597 14.6666 8 14.6666C8.23404 14.6666 8.46396 14.605 8.66664 14.488C8.86933 14.371 9.03764 14.2027 9.15467 14"
@@ -113,6 +117,7 @@
                             stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </button>
+                </div>
                 <div class="flex-none py-2 text-lg">
                     <p class="text-base-content">{{userData.value()?.username}}</p>
                 </div>
@@ -134,6 +139,8 @@
             </div>
         </div>
 
-
+    <dialog #notification_modal class="modal">
+       <app-notification-modal [notifications]="notificationsData.value()" (onDeleteEvent)="deleteNotification($event)" (onCloseEvent)="closeModal()" />
+    </dialog>
     </div>
 </div>
