@@ -1,0 +1,28 @@
+<div class="card shadow-sm card ">
+    <div class="card-body outline-1 outline-neutral-content rounded-lg">
+        <div class="flex">
+            <div class="flex-1">
+                <h2 class="font-extrabold text-3xl">{{this.notification()?.title}}</h2>
+            </div>
+            <div class="flex-none">
+                <button class="btn btn-ghost" (click)="deleteNotification()">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 4L4 12" stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M4 4L12 12" stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+
+                </button>
+            </div>
+        </div>
+        <div>
+            <p>
+               {{this.notification()?.message}} 
+            </p>
+        </div>
+        <div>
+            {{dateDisplay()}}
+        </div>
+    </div>
+</div>
