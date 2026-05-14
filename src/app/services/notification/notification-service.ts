@@ -4,9 +4,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth-service';
 import { SseClient } from 'ngx-sse-client';
-
+import { environment } from '../../../environments/environment';
 const route = 'notification';
-const domain = 'localhost'
+const domain = environment.domain
 
 @Injectable({
   providedIn: 'root',

@@ -4,8 +4,9 @@ import { Observable } from 'rxjs';
 import { ExerciseData, ExerciseRequestData, PostExerciseData } from '../data/exercise/exercise-data';
 import { ExerciseParams } from '../data/exercise/exercise-params';
 import { AuthService } from './auth-service';
+import { environment } from '../../environments/environment';
 const route = 'exercises-request';
-const domain = 'localhost'
+const domain = environment.domain
 @Injectable({
   providedIn: 'root',
 })

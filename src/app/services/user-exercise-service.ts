@@ -4,8 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth-service';
 import { ExerciseParams } from '../data/exercise/exercise-params';
+import { environment } from '../../environments/environment';
 const route = 'user-exercises';
-const domain = 'localhost';
+const domain = environment.domain
 @Injectable({
   providedIn: 'root',
 })
