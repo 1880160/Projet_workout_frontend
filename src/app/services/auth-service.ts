@@ -4,8 +4,9 @@ import { LoginData } from '../pages/sign-in/login-data';
 import { catchError, config, Observable, of, throwError } from 'rxjs';
 import { SignInData } from '../pages/sign-up/sign-in-data';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 const route = 'users';
-const domain = 'localhost'
+const domain = environment.domain
 @Injectable({
   providedIn: 'root',
 })

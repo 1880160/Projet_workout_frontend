@@ -3,8 +3,9 @@ import { inject, Injectable } from '@angular/core';
 import { WorkoutData, WorkoutDataDto } from '../../data/workout/workout-data';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth-service';
+import { environment } from '../../../environments/environment';
 const route = 'workout';
-const domain = 'localhost'
+const domain = environment.domain
 @Injectable({
   providedIn: 'root',
 })

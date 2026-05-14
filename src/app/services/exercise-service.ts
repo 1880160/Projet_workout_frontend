@@ -5,8 +5,9 @@ import { UserData } from '../data/user-data';
 import { AuthService } from './auth-service';
 import { ExerciseData } from '../data/exercise/exercise-data';
 import { ExerciseParams } from '../data/exercise/exercise-params';
+import { environment } from '../../environments/environment';
 const route = 'exercises';
-const domain = 'localhost'
+const domain = environment.domain
 @Injectable({
   providedIn: 'root',
 })

@@ -3,8 +3,9 @@ import { inject, Injectable } from '@angular/core';
 import { AuthService } from './auth-service';
 import { Observable } from 'rxjs';
 import { UserData } from '../data/user-data';
+import { environment } from '../../environments/environment';
 const route = 'users';
-const domain = 'localhost'
+const domain = environment.domain
 @Injectable({
   providedIn: 'root',
 })
