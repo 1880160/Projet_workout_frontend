@@ -41,7 +41,7 @@ export class Home {
   } );
 
 
-  exerciseList = computed(() => {
+  muscleList = computed(() => {
     let exercises: string[] = []
     this.workoutsData.value()?.forEach(
       (workout) => { workout.userExercises.forEach((userExercise) => {
